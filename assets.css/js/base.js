@@ -16,3 +16,17 @@ function out() {
     document.getElementById('madalClick').style.display = 'none';
 
 }
+
+function Login_form() {
+	document.querySelector('div#loginback').style.visibility = 'inherit';
+    document.querySelector('div#loginback').style.display = 'flex';
+    document.querySelector('div#login__hidden').style.visibility = 'hidden';
+    document.querySelector('div#login__hidden').style.display = 'none';
+}
+
+function Sign_in() {
+	document.querySelector('div#loginback').style.visibility = 'hidden';
+    document.querySelector('div#loginback').style.display = 'none';
+    document.querySelector('div#login__hidden').style.visibility = 'inherit';
+    document.querySelector('div#login__hidden').style.display = 'flex';
+}
