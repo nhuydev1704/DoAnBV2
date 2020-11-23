@@ -1,3 +1,8 @@
+<?php 
+    require_once ('php/dbhelp.php');
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hệ thống quản lý quầy thuốc bệnh viện</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets.css/fonts/fontawesome-free-5.14.0-web/css/all.min.css ">
-    <link rel="stylesheet" href="./assets.css/css/main.css">
-    <link rel="stylesheet" href="./assets.css/css/base.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.14.0-web/css/all.min.css ">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
 </head>
 <body style="margin:0;">  
 
@@ -134,6 +139,8 @@
                               </tr>
                            </thead>
                            <tbody  id="table">
+                            <?php 
+                             ?>
 
                            </tbody >
                            
@@ -153,7 +160,7 @@
             </form>
         </div>
         <div id = "madalClick1" class="modal animate"> 
-            <div id="out-form2" class="grid grid__form" method="post" action="php/index2.php" >
+            <form id="out-form2" class="grid grid__form" method="post" action="" >
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title login-title10">Cập nhập nhân viên</span>
@@ -191,33 +198,40 @@
                         <table>
                           <thead>
                             <tr>
-                                <th></th>
                                 <th>Ma NV</th>
                                 <th>Tên NV</th>
                                 <th>Địa chỉ</th>
                                 <th>Giới tính</th>
                                 <th>Ngày sinh</th>
                                 <th>Số điện thoại</th>
-                                <tr>
-                                  '<td><button onclick= "Edit1('+(array.length - 1)">Sửa</button> </td>'
-                                  <td>01</td>
-                                  <td>Nguyễn Như Ý</td>
-                                  <td>Lào Cai</td>
-                                  <td>Nam</td>
-                                  <td>17/04/2000</td>
-                                  <td>0328849286</td>
-
-                                </tr>
+                                <th></th>
+                                <th></th>
                             </tr>
                           </thead>
                           <tbody  id="table2">
+<?php 
+    $sql = 'SELECT * FROM NhanVien';
+    $employeeList = executeResult($sql);
+    foreach ($employeeList as $epl) {
+            echo '<tr>
+                    <td>'.$epl['MaNV'].'</td>
+                    <td>'.$epl['TenNV'].'</td>
+                    <td>'.$epl['DiaChi'].'</td>
+                    <td>'.$epl['GioiTinh'].'</td>
+                    <td>'.$epl['NgaySinh'].'</td>
+                    <td>'.$epl['SoDT'].'</td>
+                    <td><button class="btn10">Edit</button></td>
+                    <td><button class="btn10">Delete</button></td>
+                </tr>';                          
+    }
+?>
+                                
                            </tbody >
-                           
                           </table>
                     </div>
                 </div>
                 
-            </div>
+            </form>
         </div>
         <div id = "madalClick2" class="modal animate"> 
             <div id="out-form" class="grid grid__form" method="post" action="php/index2.php">
@@ -1090,8 +1104,6 @@
                 </div>
         </div>
     </div>
-    <script src="./assets.css/js/value.js"></script>
-    <script src="./assets.css/js/value2.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

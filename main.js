@@ -55,8 +55,7 @@ function out() {
 
 }
 function out1() {
-    document.getElementById('madalClick1').style.visibility = 'hidden';
-    document.getElementById('madalClick1').style.display = 'none';
+    window.open("../index1.php","_self")
 }
 
 function out2() {

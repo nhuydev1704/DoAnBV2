@@ -95,6 +95,21 @@
     overflow: hidden;
 }
 
+
+.btn10{
+    text-decoration: none;
+    color: #21ebff;
+    font-size: 1.6rem;
+    height: 20px;
+    width: 80px;
+    display: inline-block;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
 /* .btn > a:first-child {
     filter: hue-rotate(115deg);
 }
