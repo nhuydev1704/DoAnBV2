@@ -27,8 +27,6 @@
                 <span style="--i:10;"> Thuốc </span>
                 <span style="--i:11;"> Bệnh </span>
                 <span style="--i:12;"> Viện </span>
-                <span style="--i:13;"> 3 </span>
-                <span style="--i:14;"> Vì </span>
         </div>
         <div class="nhom8">NGUYỄN NHƯ Ý</div>
 
@@ -48,7 +46,7 @@
 
                         </li>
                         <li class="pill-item" onclick="UpdateKhoaDT()">
-                            <i class="fa fa-hospital-o" style="font-size:30px;color:#D2691E"></i>
+                            <i class="fa fa-hospital" style="font-size:30px;color:#D2691E"></i>
                         </br>
                             <span class="pill-text">Update khoa điều trị</span>
                             
