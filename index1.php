@@ -114,7 +114,7 @@
         </div>
         <div class="div2"></div>
         <div id = "madalClick" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <form id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title">Thông tin kho thuốc</span>
@@ -144,17 +144,17 @@
                 </div>
                 <div class="box-list">
                     <ul class="form-list">
-                        <li class="form-item">Tạo mới</li>
-                        <li id="save" class="form-item" onclick="clickSave()">Lưu</li>
-                        <li id="setting" class="form-item" onclick="clickSetting()" >Sửa</li>
-                        <li class="form-item" onclick="clickDelete()" >Xóa</li>
-                        <li class="form-item" onclick="out()">Thoat</li>
+                        <button class="form-item">Tạo mới</button>
+                        <button id="save" class="form-item" onclick="clickSave()">Lưu</button>
+                        <button id="setting" class="form-item" onclick="clickSetting()" >Sửa</button>
+                        <button class="form-item" onclick="clickDelete()" >Xóa</button>
+                        <button class="form-item" onclick="out()">Thoat</button>
                     </ul>
                 </div>
-            </div>
+            </form>
         </div>
         <div id = "madalClick1" class="modal animate"> 
-            <div id="out-form2" class="grid grid__form" >
+            <div id="out-form2" class="grid grid__form" method="post" action="index2.php" >
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title login-title10">Cập nhập nhân viên</span>
@@ -181,11 +181,11 @@
                     </div>
                     <div class="box-list box-list1">
                          <ul class="form-list form-list1">
-                            <li class="form-item1">Tạo mới</li>
-                            <li class="form-item1" onclick="clickSave1()">Lưu</li>
-                            <li class="form-item1" onclick="clickSetting1()">Sửa</li>
-                            <li class="form-item1" onclick="clickDelete1()">Xóa</li>
-                            <li class="form-item1" onclick="out1()">Thoat</li>
+                            <button class="form-item1">Tạo mới</button>
+                            <button class="form-item1" onclick="clickSave1()">Lưu</button>
+                            <button class="form-item1" onclick="clickSetting1()">Sửa</button>
+                            <button class="form-item1" onclick="clickDelete1()">Xóa</button>
+                            <button class="form-item1" onclick="out1()">Thoat</button>
                         </ul>
                     </div>
                     <div class="value">
@@ -223,7 +223,7 @@
             </div>
         </div>
         <div id = "madalClick2" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title">Thông tin khoa</span>
@@ -260,17 +260,17 @@
                 </div>
                 <div class="box-list">
                     <ul class="form-list">
-                        <li class="form-item">Tạo mới</li>
-                        <li class="form-item">Lưu</li>
-                        <li class="form-item">Sửa</li>
-                        <li class="form-item">Xóa</li>
-                        <li class="form-item" onclick="out2()">Thoat</li>
+                        <button class="form-item">Tạo mới</button>
+                        <button class="form-item">Lưu</button>
+                        <button class="form-item">Sửa</button>
+                        <button class="form-item">Xóa</button>
+                        <button class="form-item" onclick="out2()">Thoat</button>
                     </ul>
                 </div>
             </div>
         </div>
         <div id = "madalClick3" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <div class="form-login">
                     <div class="login login3">
                         <span class="login-title login-title3">Thông tin nhà cung cấp</span>
@@ -287,14 +287,14 @@
                         <div class="box-list box-list3">
                             <ul class="form-list form-list3">
                                 <div class="form-item3">
-                                    <li class="form-item form-item_item3">Tạo mới</li>
-                                     <li class="form-item form-item_item3">Lưu</li>
+                                    <button class="form-item form-item_item3">Tạo mới</button>
+                                     <button class="form-item form-item_item3">Lưu</button>
                                 </div>
                                 <div class="form-item3">
-                                    <li class="form-item form-item_item3">Sửa</li>
-                                    <li class="form-item form-item_item3">Xóa</li>
+                                    <button class="form-item form-item_item3">Sửa</button>
+                                    <button class="form-item form-item_item3">Xóa</button>
                                 </div>
-                                <li class="form-item" onclick="out3()">Thoat</li>
+                                <button class="form-item" onclick="out3()">Thoat</button>
                             </ul>
                         </div>
                     </div>
@@ -322,7 +322,7 @@
             </div>
         </div>
         <div id = "madalClick4" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <div class="form-login">
                     <div class="login login3 login4">
                         <span class="login-title login-title3">Thông tin thuốc</span>
@@ -363,14 +363,14 @@
                         <div class="box-list box-list3 box-list4">
                             <ul class="form-list form-list3 form-list4">
                                 <div class="form-item3">
-                                    <li class="form-item form-item_item3">Tạo mới</li>
-                                     <li class="form-item form-item_item3">Lưu</li>
+                                    <button class="form-item form-item_item3">Tạo mới</button>
+                                     <button class="form-item form-item_item3">Lưu</button>
                                 </div>
                                 <div class="form-item3">
-                                    <li class="form-item form-item_item3">Sửa</li>
-                                    <li class="form-item form-item_item3">Xóa</li>
+                                    <button class="form-item form-item_item3">Sửa</button>
+                                    <button class="form-item form-item_item3">Xóa</button>
                                 </div>
-                                <li class="form-item" onclick="out4()">Thoat</li>
+                                <button class="form-item" onclick="out4()">Thoat</button>
                             </ul>
                         </div>
                     </div>
@@ -405,7 +405,7 @@
             </div>
         </div>   
         <div id = "madalClick5" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <span class="login-title login-title3 login-title5">Thông tin phiếu đặt mua</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc đặt mua</span>
                 <div class="manage">
@@ -444,11 +444,11 @@
                                 </div>
                                 <div class="box-list5">
                                     <ul class="form-list5">
-                                        <li class="form-item5">Tạo mới</li>
-                                        <li class="form-item5">Lưu</li>
-                                        <li class="form-item5">Sửa</li>
-                                        <li class="form-item5">Xóa</li>
-                                        <li class="form-item5" onclick="out5()">Thoat</li>
+                                        <button class="form-item5">Tạo mới</button>
+                                        <button class="form-item5">Lưu</button>
+                                        <button class="form-item5">Sửa</button>
+                                        <button class="form-item5">Xóa</button>
+                                        <button class="form-item5" onclick="out5()">Thoat</button>
                                     </ul>
                                 </div>
                            
@@ -541,7 +541,7 @@
             </div>
         </div>
         <div id = "madalClick6" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <span class="login-title login-title3 login-title5">Thông tin bảng báo giá</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc báo giá</span>
                 <div class="manage">
@@ -573,11 +573,11 @@
                                 </div>
                                 <div class="box-list5">
                                     <ul class="form-list5">
-                                        <li class="form-item5">Tạo mới</li>
-                                        <li class="form-item5">Lưu</li>
-                                        <li class="form-item5">Sửa</li>
-                                        <li class="form-item5">Xóa</li>
-                                        <li class="form-item5" onclick="out6()">Thoat</li>
+                                        <button class="form-item5">Tạo mới</button>
+                                        <button class="form-item5">Lưu</button>
+                                        <button class="form-item5">Sửa</button>
+                                        <button class="form-item5">Xóa</button>
+                                        <button class="form-item5" onclick="out6()">Thoat</button>
                                     </ul>
                                 </div>
                            
@@ -660,7 +660,7 @@
             </div>
         </div>
         <div id = "madalClick7" class="modal animate"> 
-            <div id="out-form" class="grid grid__form ">
+            <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                 <span class="login-title login-title3 login-title6">Thông tin phiếu nhập</span>
                 <span class="login-title login-title3 login-title56">Chi tiết thuốc</span>
                 <div class="manage">
@@ -716,11 +716,11 @@
                                 </div>
                                 <div class="box-list5">
                                     <ul class="form-list5">
-                                        <li class="form-item5">Tạo mới</li>
-                                        <li class="form-item5">Lưu</li>
-                                        <li class="form-item5">Sửa</li>
-                                        <li class="form-item5">Xóa</li>
-                                        <li class="form-item5" onclick="out7()">Thoat</li>
+                                        <button class="form-item5">Tạo mới</button>
+                                        <button class="form-item5">Lưu</button>
+                                        <button class="form-item5">Sửa</button>
+                                        <button class="form-item5">Xóa</button>
+                                        <button class="form-item5" onclick="out7()">Thoat</button>
                                     </ul>
                                 </div>
                            
@@ -775,11 +775,11 @@
                             </div>
                             <div class="box-list5">
                                 <ul class="form-list5">
-                                    <li class="form-item5">Tạo mới</li>
-                                    <li class="form-item5">Lưu</li>
-                                    <li class="form-item5">Sửa</li>
-                                    <li class="form-item5">Xóa</li>
-                                    <li class="form-item5" onclick="out7()">Thoat</li>
+                                    <button class="form-item5">Tạo mới</button>
+                                    <button class="form-item5">Lưu</button>
+                                    <button class="form-item5">Sửa</button>
+                                    <button class="form-item5">Xóa</button>
+                                    <button class="form-item5" onclick="out7()">Thoat</button>
                                 </ul>
                             </div>
                        
@@ -813,7 +813,7 @@
             </div>
         </div>
         <div id = "madalClick8" class="modal animate">  
-                <div id="out-form" class="grid grid__form ">
+                <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                     <span class="login-title login-title3 login-title6">Thông tin phiếu xuất</span>
                     <span class="login-title login-title3 login-title56">Chi tiết thuốc</span>
                     <div class="manage">
@@ -869,11 +869,11 @@
                                     </div>
                                     <div class="box-list5">
                                         <ul class="form-list5">
-                                            <li class="form-item5">Tạo mới</li>
-                                            <li class="form-item5">Lưu</li>
-                                            <li class="form-item5">Sửa</li>
-                                            <li class="form-item5">Xóa</li>
-                                            <li class="form-item5" onclick="out8()">Thoat</li>
+                                            <button class="form-item5">Tạo mới</button>
+                                            <button class="form-item5">Lưu</button>
+                                            <button class="form-item5">Sửa</button>
+                                            <button class="form-item5">Xóa</button>
+                                            <button class="form-item5" onclick="out8()">Thoat</button>
                                         </ul>
                                     </div>
                                
@@ -928,11 +928,11 @@
                                 </div>
                                 <div class="box-list5">
                                     <ul class="form-list5">
-                                        <li class="form-item5">Tạo mới</li>
-                                        <li class="form-item5">Lưu</li>
-                                        <li class="form-item5">Sửa</li>
-                                        <li class="form-item5">Xóa</li>
-                                        <li class="form-item5" onclick="out8()">Thoat</li>
+                                        <button class="form-item5">Tạo mới</button>
+                                        <button class="form-item5">Lưu</button>
+                                        <button class="form-item5">Sửa</button>
+                                        <button class="form-item5">Xóa</button>
+                                        <button class="form-item5" onclick="out8()">Thoat</button>
                                     </ul>
                                 </div>
                            
@@ -967,7 +967,7 @@
             
         </div>
         <div id = "madalClick9" class="modal animate"> 
-               <div id="out-form" class="grid grid__form ">
+               <div id="out-form" class="grid grid__form" method="post" action="index2.php">
                     <span class="login-title login-title3 login-title6 login-title89">Thông tin thuốc hủy</span>
                     <span class="login-title login-title3 login-title56 login-title9">Chi tiết thuốc</span>
                     <div class="manage">
@@ -1008,11 +1008,11 @@
                                     </div>
                                     <div class="box-list5">
                                         <ul class="form-list5">
-                                            <li class="form-item5">Tạo mới</li>
-                                            <li class="form-item5">Lưu</li>
-                                            <li class="form-item5">Sửa</li>
-                                            <li class="form-item5">Xóa</li>
-                                            <li class="form-item5" onclick="out9()">Thoat</li>
+                                            <button class="form-item5">Tạo mới</button>
+                                            <button class="form-item5">Lưu</button>
+                                            <button class="form-item5">Sửa</button>
+                                            <button class="form-item5">Xóa</button>
+                                            <button class="form-item5" onclick="out9()">Thoat</button>
                                         </ul>
                                     </div>
                                
@@ -1064,11 +1064,11 @@
                                 </div>
                                 <div class="box-list5">
                                     <ul class="form-list5">
-                                        <li class="form-item5">Tạo mới</li>
-                                        <li class="form-item5">Lưu</li>
-                                        <li class="form-item5">Sửa</li>
-                                        <li class="form-item5">Xóa</li>
-                                        <li class="form-item5" onclick="out9()">Thoat</li>
+                                        <button class="form-item5">Tạo mới</button>
+                                        <button class="form-item5">Lưu</button>
+                                        <button class="form-item5">Sửa</button>
+                                        <button class="form-item5">Xóa</button>
+                                        <button class="form-item5" onclick="out9()">Thoat</button>
                                     </ul>
                                 </div>
                            
