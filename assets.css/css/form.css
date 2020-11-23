@@ -27,6 +27,8 @@ body, html {
     left: 0;
     display: flex;
     animation: fadeIn linear 0.1s;
+    display: none;
+    visibility: hidden;
 }
 .modal__overlay{
     position: absolute;
@@ -169,7 +171,7 @@ body, html {
     align-items: center;
 }
 
-#loginback {
+#loginback,#login__hidden {
     display: none;
     visibility: hidden;
 }

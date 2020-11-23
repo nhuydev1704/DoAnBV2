@@ -35,11 +35,11 @@
                     
                      <div class="picture__selection-btn">
                         <div class="selection-btn">
-                            <div class="btn btn-patient">
-                                <a href="">Đăng Nhập</a>
+                            <div class="btn btn-patient" style="cursor: pointer;" onclick="onLogin()">
+                                <a>Đăng Nhập</a>
                             </div>
-                            <div class="btn btn-doctor">
-                                <a href="">Đăng Ký</a>
+                            <div class="btn btn-doctor" style="cursor: pointer;" onclick="onSingin()">
+                                <a>Đăng Ký</a>
                             </div>
                         </div>
                     </div> 
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-    <div class="modal1">
+    <div class="modal1" id="modal__view">
         <div class="modal__overlay"></div>
         <div class="modal__body">
     </div>
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="auth-form__controls">
-                        <div class="btn1 btn--normal auth-form__controls-back">TRỞ LẠI</div>
+                        <div class="btn1 btn--normal auth-form__controls-back" onclick="loginBack1()">TRỞ LẠI</div>
                         <button class="btn1 btn--primary" name="DK">ĐĂNG KÝ</button>
                     </div>
                 </form>

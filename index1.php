@@ -211,7 +211,6 @@
                             </tr>
                           </thead>
                           <tbody  id="table2">
-
                            </tbody >
                            
                           </table>
@@ -232,7 +231,7 @@
                         </div>
                     </div>
                     <div class="value">
-                        <table >
+                        <table>
                             <tr>
                               <th width = "5%"></th>
                               <th>Mã khoa</th>
@@ -1063,10 +1062,7 @@
                                         <button class="form-item5">Xóa</button>
                                         <li class="form-item5" onclick="out9()">Thoat</li>
                                     </ul>
-                                </div>
-                           
-                             
-                             
+                                </div>    
                         </div>
                         <div class="manage-top_right">
                             <div class="value">
@@ -1076,7 +1072,6 @@
                                       <th>Số phiếu BB</th>
                                       <th>Mã thuốc</th> 
                                       <th>Số lượng</th>    
-                                         
                                     </tr>
                                     <tr>
                                       <td></td>
@@ -1094,9 +1089,6 @@
                     </div>   
                 </div>
         </div>
-
-
-        
     </div>
     <script src="./assets.css/js/value.js"></script>
     <script src="./assets.css/js/value2.js"></script>
