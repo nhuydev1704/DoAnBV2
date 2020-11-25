@@ -110,7 +110,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-   <div id = "" class="modal animate"> 
+   <div id = "" class="modal"> 
             <div id="out-form" class="grid grid__form">
                 <span class="login-title login-title3 login-title5">Thông tin phiếu đặt mua</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc đặt mua</span>
@@ -144,7 +144,8 @@
                                             
                                         </div>
                                         <div class="login-tenkho login-ncc"><span class = "label label5" >Nhà cung cấp</span>
-                                            <select name="ncc" id="cars" class="" value="<?=$ncc2?>">
+                                            <select name="ncc" id="cars" class="" >
+                                                <option value="<?=$ncc2?>"><?=$ncc2?></option>
                                                 <?php 
                                                         $sql = 'SELECT MaNCC FROM NhaCungCap';
                                                     $employeeList = executeResult($sql);
@@ -183,7 +184,12 @@
                                     </thead>
                                     <tbody>
 <?php 
+if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+    $sql = 'SELECT * FROM PhieuDatMua WHERE NgayMua LIKE "%'.$_GET['timkiem'].'%"';
+    }else {
+
     $sql = 'SELECT * FROM PhieuDatMua';
+}
     $datmuaList = executeResult($sql);
 
     foreach ($datmuaList as $mua) {
@@ -204,6 +210,14 @@
                             </div>
                            
                         </div>
+                        <form action="" method="get" class="timkiem" style="
+    top: 22px;
+    left: 59%;
+">
+                        
+                        <div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ngay mua yyyy-mm-dd">
+                            <button>Tim</button></div>
+                        </form>
                     </div>
                     <div class="manage-top manage-bottom">
                        <form action="" method="post" style="width: 60%;">
@@ -269,7 +283,12 @@
                                 </thead>
                                 <tbody>
 <?php 
+if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
+     $sql = 'SELECT * FROM ThuocDatMua WHERE MaThuoc LIKE "%'.$_GET['timkiem2'].'%"';
+    }else {
     $sql = 'SELECT * FROM ThuocDatMua';
+}
+   
     $datmuaList = executeResult($sql);
 
     foreach ($datmuaList as $mua) {
@@ -289,7 +308,14 @@
                        
                     </div>
                     </div>
-
+                    <form action="" method="get" class="timkiem" style="
+    top: 52%;
+    left: 59%;
+">
+                        
+                        <div class="login-tenkho "><input type="text" name="timkiem2" placeholder="Ma thuoc">
+                            <button>Tim</button></div>
+                        </form>
                 </div>
             </div>
         </div>

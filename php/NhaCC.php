@@ -65,7 +65,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id = "madalClick3" class="modal animate"> 
+	<div id = "madalClick3" class="modal"> 
             <form id="out-form" class="grid grid__form" method="post" action="">
                 <div class="form-login">
                     <div class="login login3">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class="value">
-                        <table class="table3">
+                        <table class="">
                             <thead>
                                 <tr>
                                   <th>Mã nhà cung cấp</th>
@@ -103,7 +103,12 @@
                             
                             <tbody>
 <?php 
+if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+    $sql = 'SELECT * FROM NhaCungCap WHERE TenNCC LIKE "%'.$_GET['timkiem'].'%"';
+    }else {
+
     $sql = 'SELECT * FROM NhaCungCap';
+}
     $nccList = executeResult($sql);
 
     foreach ($nccList as $ncc) {
@@ -122,6 +127,12 @@
                     </div>
                 </div>
                 
+            </form>
+            <form class="timkiem" action="" method="get" style="top:50%; left: 59%;">
+                        <div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ten nha cung cap" style="
+    width: 77%;
+">
+                            <button>Tim</button></div>
             </form>
         </div>
 <script src="../main.js"></script>

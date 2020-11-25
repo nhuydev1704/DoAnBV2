@@ -1,59 +1,53 @@
 function UpdatePill() {
-    window.open("./php/KhoPill.php","_self")
-
+    window.open("./php/KhoPill.php", "_self");
 }
+
 function UpdateEmployee() {
-    window.open("./php/Employee.php","_self")
+    window.open("./php/Employee.php", "_self");
 }
 
 function UpdateKhoaDT() {
-    document.getElementById('madalClick2').style.visibility = 'inherit';
-    document.getElementById('madalClick2').style.display = 'flex';
+    window.open("./php/KhoaDT.php", "_self")
 }
 
 function UpdateVendor() {
-    document.getElementById('madalClick3').style.visibility = 'inherit';
-    document.getElementById('madalClick3').style.display = 'flex';
+    window.open("./php/NhaCC.php", "_self")
 }
-
 
 function UpdateMedicine() {
-    document.getElementById('madalClick4').style.visibility = 'inherit';
-    document.getElementById('madalClick4').style.display = 'flex';
+    window.open("./php/Pill.php", "_self")
+
 }
 
-
 function buy() {
-    document.getElementById('madalClick5').style.visibility = 'inherit';
-    document.getElementById('madalClick5').style.display = 'flex';
-    }
+    window.open("./php/QLDatMua.php", "_self")
+
+}
+
 function bill() {
-    document.getElementById('madalClick6').style.visibility = 'inherit';
-    document.getElementById('madalClick6').style.display = 'flex';
-    }
+    window.open("./php/QLBaoGia.php", "_self")
+
+}
+
 function quanLyNhap() {
-    document.getElementById('madalClick7').style.visibility = 'inherit';
-    document.getElementById('madalClick7').style.display = 'flex';
-    }
+    window.open("./php/QLNhapThuoc.php", "_self")
+
+}
+
 function quanLyXuat() {
-    document.getElementById('madalClick8').style.visibility = 'inherit';
-    document.getElementById('madalClick8').style.display = 'flex';
-    }
+    window.open("./php/QLXuatThuoc.php", "_self")
+}
+
 function quanLyHuy() {
-    document.getElementById('madalClick9').style.visibility = 'inherit';
-    document.getElementById('madalClick9').style.display = 'flex';
-    }
-
-
-
+    window.open("./php/QLHuyThuoc.php", "_self")
+}
 // TODO: OUT
 // function out() {
 //     document.getElementById('madalClick').style.visibility = 'hidden';
 //     document.getElementById('madalClick').style.display = 'none';
-
 // }
 function out() {
-    window.open("../index1.php","_self")
+    window.open("../index1.php", "_self")
 }
 
 function out2() {
@@ -74,8 +68,8 @@ function out4() {
 function out5() {
     document.getElementById('madalClick5').style.visibility = 'hidden';
     document.getElementById('madalClick5').style.display = 'none';
-
 }
+
 function out6() {
     document.getElementById('madalClick6').style.visibility = 'hidden';
     document.getElementById('madalClick6').style.display = 'none';
@@ -96,31 +90,26 @@ function out9() {
     document.getElementById('madalClick9').style.display = 'none';
 }
 
-
-
-
 function New() {
-    window.open("Employee.php","_self")
+    window.open("Employee.php", "_self")
 }
 
 function New2() {
-    window.open("KhoPill.php","_self")
+    window.open("KhoPill.php", "_self")
 }
 
 function New3() {
-    window.open("KhoaDT.php","_self")
+    window.open("KhoaDT.php", "_self")
 }
 
 function New4() {
-    window.open("NhaCC.php","_self")
+    window.open("NhaCC.php", "_self")
 }
 
 function New5() {
-    window.open("Pill.php","_self")
+    window.open("Pill.php", "_self")
 }
 
 function New6() {
-    window.open("QLDatMua.php","_self")
+    window.open("QLDatMua.php", "_self")
 }
-
-

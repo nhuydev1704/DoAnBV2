@@ -57,7 +57,7 @@
                     <div class="login">
                         <span class="login-title">Thông tin kho thuốc</span>
                         <div class="login-form">
-                            <div class="login-makho"><span class = "label" >Mã kho:</span><input type="text" name="makho" id="makho" value="<?=$makho2?>"></div>
+                            <div class="login-makho" style="margin-bottom: 16px;"><span class = "label" >Mã kho:</span><input type="text" name="makho" id="makho" value="<?=$makho2?>"></div>
                             <div class="login-tenkho"><span class = "label" >Tên kho:</span><input type="text" name="tenkho" id="tenkho" value="<?=$tenkho2?>">
                             </div>
                         </div>
@@ -71,8 +71,14 @@
                               </tr>
                            </thead>
                            <tbody  id="table">
-                            <?php 
+<?php 
+if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+        $sql = 'SELECT * FROM KhoThuoc WHERE TenKho LIKE "%'.$_GET['timkiem'].'%"';
+    }else {
+
     $sql = 'SELECT * FROM KhoThuoc';
+}
+    
     $KhoPill = executeResult($sql);
 
     $index = 1;
@@ -98,7 +104,11 @@
                     </ul>
                 </div>
             </form>
-            
+            <form class="timkiem" action="" method="get">
+                        
+                        <div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ten Kho">
+                            <button>Tim</button></div>
+            </form>
     </div>
 <script src="../main.js"></script>
     <script type="text/javascript">

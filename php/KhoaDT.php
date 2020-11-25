@@ -74,7 +74,13 @@
 
                             <tbody>
 <?php 
+if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+        $sql = 'SELECT * FROM KhoaDT WHERE TenKhoa LIKE "%'.$_GET['timkiem'].'%"';
+    }else {
+
     $sql = 'SELECT * FROM KhoaDT';
+}
+    
     $khoaDTList = executeResult($sql);
     $index = 1;
     foreach ($khoaDTList as $khoadt) {
@@ -98,6 +104,11 @@
                         <li class="form-item" onclick="out()">Thoat</li>
                     </ul>
                 </div>
+            </form>
+            <form action="" method="get" class="timkiem">
+                        
+                        <div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ten Khoa">
+                            <button>Tim</button></div>
             </form>
         </div>
 <script src="../main.js"></script>

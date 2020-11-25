@@ -83,7 +83,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id = "" class="modal animate"> 
+	<div id = "" class="modal "> 
             <div id="out-form2" class="grid grid__form" >
                 <div class="form-login">
                 	<form method="post" action="">
@@ -132,7 +132,13 @@
                           </thead>
                           <tbody  id="table2">
 <?php 
+
+	if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+		$sql = 'SELECT * FROM NhanVien WHERE TenNV LIKE "%'.$_GET['timkiem'].'%"';
+	}else {
+
     $sql = 'SELECT * FROM NhanVien';
+}
     $employeeList = executeResult($sql);
 
     $index = 1;
@@ -156,6 +162,11 @@
                 </div>
                 
             </div>
+            <form action="" method="get" class="timkiem">
+                    	
+                    	<div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ho Ten Nhan Vien">
+                    		<button>Tim</button></div>
+            </form>
         </div>
 <script src="../main.js"></script>
 	<script type="text/javascript">

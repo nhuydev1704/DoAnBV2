@@ -90,11 +90,14 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id = "madalClick4" class="modal animate"> 
+	<div id = "madalClick4" class="modal"> 
             <form id="out-form" class="grid grid__form" method="post" action="">
                 <div class="form-login">
                     <div class="login login3 login4">
-                        <span class="login-title login-title3">Thông tin thuốc</span>
+                        <span class="login-title login-title3" style="
+    top: -16px;
+    left: 132px;
+">Thông tin thuốc</span>
                         <div class="login-form login-form3 login-form4">
                             <div class="login-makho login-ncc"><span class = "label" >Mã thuốc:</span><input type="text" name="mathuoc" id="" value="<?=$mathuoc2?>">
                             </div>
@@ -156,7 +159,12 @@
 
                             <tbody>
  <?php 
+ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+        $sql = 'SELECT * FROM Thuoc WHERE TenThuoc LIKE "%'.$_GET['timkiem'].'%"';
+    }else {
     $sql = 'SELECT * FROM Thuoc';
+}
+
     $pillList = executeResult($sql);
 
     foreach ($pillList as $pill) {
@@ -180,6 +188,10 @@
                     </div>
                 </div>
                 
+            </form>
+             <form class="timkiem" action="" method="get" style="top:52.5%;">
+                        <div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ten Thuoc">
+                            <button>Tim</button></div>
             </form>
         </div>   
 <script src="../main.js"></script>

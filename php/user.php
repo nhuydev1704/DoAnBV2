@@ -26,7 +26,6 @@
 	        }if($password1 !== $password2) {
 	        	echo "Password nhap lai khong trung khop!";
 	        } else {
-    		echo "1";
         $username = "root"; // Khai báo username
         $password = "";      // Khai báo password
         $server   = "localhost";   // Khai báo server
@@ -42,7 +41,8 @@
         $sql = "INSERT INTO user(email, password)
         VALUES ('$email','$password1')";
         if ($connect->query($sql) === TRUE) {
-        echo "Thêm dữ liệu thành công";
+        	$message = "Dang ky thanh cong! Chao mung ban den voi He Thong Cua Nhu Y";
+                echo "<script type='text/javascript'>alert('$message');</script>";
         } else {
         echo "Error: " . $sql . "<br>" . $connect->error;
         }
