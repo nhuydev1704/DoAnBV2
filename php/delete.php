@@ -39,5 +39,21 @@
 		echo "Xoa thanh cong";
 
 	}
+
+	if (isset($_POST['sophieumua'])) {
+		$sophieumua = $_POST['sophieumua'];
+		$sql = 'DELETE FROM PhieuDatMua WHERE SoPhieuMua = ' . $sophieumua;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+	if (isset($_POST['id'])) {
+		$id = $_POST['id'];
+		$sql = 'DELETE FROM ThuocDatMua WHERE id = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
  ?>
 

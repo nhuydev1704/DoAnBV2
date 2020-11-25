@@ -1,52 +1,97 @@
 <?php 
-    $mancc = $tenncc = $diachi = $sodienthoai = "";
+    $sophieumua = $id = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = "";
     require_once ('dbhelp.php');
-    $mancc1 = $_GET['mancc'];
+    $sophieumua1 = $_GET['sophieumua'];
+    $id = $_GET['id'];
     if (!empty($_POST)) {
-        if (isset($_POST['mancc'])) {
-            $mancc = $_POST['mancc'];
+        if (isset($_POST['sophieumua'])) {
+            $sophieumua = $_POST['sophieumua'];
         }
 
-        if (isset($_POST['tenncc'])) {
-            $tenncc = $_POST['tenncc'];
+        if (isset($_POST['ngaymua'])) {
+            $ngaymua = $_POST['ngaymua'];
 
         }
 
-        if (isset($_POST['diachi'])) {
-            $diachi = $_POST['diachi'];
+        if (isset($_POST['manv'])) {
+            $manv = $_POST['manv'];
 
         }
-        if (isset($_POST['sodienthoai'])) {
-            $sodienthoai = $_POST['sodienthoai'];
+        if (isset($_POST['ncc'])) {
+            $ncc = $_POST['ncc'];
 
         }
-        $mancc = str_replace('\'','\\\'', $mancc);
-        $tenncc = str_replace('\'','\\\'', $tenncc);
-        $diachi = str_replace('\'','\\\'', $diachi);
-        $sodienthoai = str_replace('\'','\\\'', $sodienthoai);
+        if (isset($_POST['sophieumuathuoc'])) {
+            $sophieumuathuoc = $_POST['sophieumuathuoc'];
 
-        if ($mancc != '' &&  $mancc == $mancc1) {
+        }
+
+        if (isset($_POST['mathuoc'])) {
+            $mathuoc = $_POST['mathuoc'];
+
+        }
+        if (isset($_POST['soluong'])) {
+            $soluong = $_POST['soluong'];
+
+        }
+        $sophieumua = str_replace('\'','\\\'', $sophieumua);
+        $ngaymua = str_replace('\'','\\\'', $ngaymua);
+        $manv = str_replace('\'','\\\'', $manv);
+        $ncc = str_replace('\'','\\\'', $ncc);
+
+        $sophieumuathuoc = str_replace('\'','\\\'', $sophieumuathuoc);
+        $mathuoc = str_replace('\'','\\\'', $mathuoc);
+        $soluong = str_replace('\'','\\\'', $soluong);
+
+        if ($sophieumua != '' &&  $sophieumua == $sophieumua1) {
             //update 
-            $sql = "UPDATE NhaCungCap SET MaNCC = '$mancc', TenNCC ='$tenncc',  DiaChi= '$diachi', SoDT='$sodienthoai' WHERE MaNCC = " .$mancc;
+            $sql = "UPDATE PhieuDatMua SET SoPhieuMua = '$sophieumua', NgayMua ='$ngaymua',  MaNV= '$manv', MaNCC='$ncc' WHERE SoPhieuMua = " .$sophieumua;
         }else {
             //insert
-            $sql = "INSERT INTO NhaCungCap(MaNCC,TenNCC,DiaChi,SoDT)
-                VALUES('$mancc', '$tenncc', '$diachi','$sodienthoai')";
+            $sql = "INSERT INTO PhieuDatMua(SoPhieuMua,NgayMua,MaNV,MaNCC)
+                VALUES('$sophieumua', '$ngaymua', '$manv','$ncc')";
         }
         execute($sql);
+
+        //
+        //
+        if ($id != '') {
+            //update 
+            $sql1 = "UPDATE ThuocDatMua SET SoPhieuMua = '$sophieumuathuoc', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id = " .$id;
+        }else {
+            //insert
+            $sql1 = "INSERT INTO ThuocDatMua(SoPhieuMua,MaThuoc,SoLuong)
+                VALUES('$sophieumuathuoc', '$mathuoc', '$soluong')";
+        }
+        execute($sql1);
 }
 
-    if (isset($_GET['mancc'])) {
-        $mancc = $_GET['mancc'];
+    if (isset($_GET['sophieumua'])) {
+        $sophieumua = $_GET['sophieumua'];
         
-        $sql = 'SELECT * FROM NhaCungCap WHERE MaNCC = '. $mancc;
+        $sql = 'SELECT * FROM PhieuDatMua WHERE SoPhieuMua = '. $sophieumua;
         $nccList = executeResult($sql);
         if ($nccList != null && count($nccList) > 0) {
             $ncc = $nccList[0];
-            $mancc2 = $ncc['MaNCC'];
-            $tenncc2 = $ncc['TenNCC'];
-            $diachi2 = $ncc['DiaChi'];
-            $sodienthoai2 = $ncc['SoDT'];
+            $sophieumua2 = $ncc['SoPhieuMua'];
+            $ngaymua2 = $ncc['NgayMua'];
+            $manv2 = $ncc['MaNV'];
+            $ncc2 = $ncc['MaNCC'];
+        } else {
+
+        }
+    }
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        
+        $sql = 'SELECT * FROM ThuocDatMua WHERE id = '. $id;
+        $nccList = executeResult($sql);
+        if ($nccList != null && count($nccList) > 0) {
+            $ncc = $nccList[0];
+            $sophieumuathuoc2 = $ncc['SoPhieuMua'];
+            $mathuoc2 = $ncc['MaThuoc'];
+            $soluong2 = $ncc['SoLuong'];
         } else {
 
         }
@@ -66,23 +111,24 @@
 </head>
 <body>
    <div id = "" class="modal animate"> 
-            <form id="out-form" class="grid grid__form" method="post" action="">
+            <div id="out-form" class="grid grid__form">
                 <span class="login-title login-title3 login-title5">Thông tin phiếu đặt mua</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc đặt mua</span>
                 <div class="manage" style="width: 90%;">
-                    <div class="manage-top" style="padding-bottom: 56px; ">
-                        <div class="manage-top_left">
+                    <div class="manage-top" style="padding: 14px 0 40px 0; ">
+                        <form action="" method="post" style="width: 60%;">
+                            <div class="manage-top_left" style="width: 90%;">
                                 <div class="manage-top_left-form">
                                     <div class="login-form login-form5" >
-                                        <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu mua:</span><input type="text" name="sophieumua" id="">
+                                        <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu mua:</span><input type="text" name="sophieumua" id="" value="<?=$sophieumua2?>">
                                         </div>
                                         <div class="login-tenkho login-ncc"><span class = "label label5" >Ngày mua:</span>
                                             <input type="date" id="start" name="ngaymua"
-                                           value="2018-07-22"
-                                           min="2010-01-01" max="2020-12-31" value="<?=$ngaysx2?>">
+                                           min="2010-01-01" max="2020-12-31" value="<?=$ngaymua2?>">
                                         </div>
                                         <div class="login-tenkho login-ncc"><span class = "label label5" >Mã nhân viên:</span>
                                             <select name="manv" id="cars" class="">
+                                                <option value="<?=$manv2?>"><?=$manv2?></option>
                                                 <?php 
                                                         $sql = 'SELECT MaNV FROM NhanVien';
                                                     $employeeList = executeResult($sql);
@@ -98,7 +144,7 @@
                                             
                                         </div>
                                         <div class="login-tenkho login-ncc"><span class = "label label5" >Nhà cung cấp</span>
-                                            <select name="ncc" id="cars" class="">
+                                            <select name="ncc" id="cars" class="" value="<?=$ncc2?>">
                                                 <?php 
                                                         $sql = 'SELECT MaNCC FROM NhaCungCap';
                                                     $employeeList = executeResult($sql);
@@ -121,29 +167,38 @@
                                         <li class="form-item5" onclick="out()">Thoat</li>
                                     </ul>
                                 </div>
-                           
-                             
-                             
-                        </div>
+
+                             </div>
+                        </form>
                         <div class="manage-top_right">
                             <div class="value">
                                 <table class="table5">
-                                    <tr>
-                                      <th width = "5%"></th>
-                                      <th>Số phiếu mua</th>
-                                      <th>Ngày mua</th> 
-                                      <th>Mã nhân viên</th>
-                                      <th>Mã nhà cung cấp</th>  
-        
-                                    </tr>
-                                    <tr>
-                                      <td></td>
-                                      <td>1</td>
-                                      <td>27/12/2000</td>
-                                      <td>001</td>
-                                      <td>01</td>
+                                    <thead>
+                                        <tr>
+                                              <th width="12%">Số phiếu mua</th>
+                                              <th>Ngày mua</th> 
+                                              <th width="12%">Mã nhân viên</th>
+                                              <th width="15%">Mã nhà cung cấp</th>  
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<?php 
+    $sql = 'SELECT * FROM PhieuDatMua';
+    $datmuaList = executeResult($sql);
 
-                                    </tr>
+    foreach ($datmuaList as $mua) {
+            echo '<tr>
+                    <td>'.$mua['SoPhieuMua'].'</td>
+                    <td>'.$mua['NgayMua'].'</td>
+                    <td>'.$mua['MaNV'].'</td>
+                    <td>'.$mua['MaNCC'].'</td>
+                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?sophieumua='.$mua['SoPhieuMua'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteDatMua('.$mua['SoPhieuMua'].')">Delete</div></td>
+                </tr>';                          
+    }
+?>
+
+                                    </tbody>
                                     
                                   </table>
                             </div>
@@ -151,22 +206,43 @@
                         </div>
                     </div>
                     <div class="manage-top manage-bottom">
-                        <div class="manage-top_left">
+                       <form action="" method="post" style="width: 60%;">
+                            <div class="manage-top_left" style="width: 90%;">
                             
                             <div class="manage-top_left-form">
                                 <div class="login-form login-form5" >
-                                    <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu mua:</span><input type="text" name="mancc" id="">
+                                    <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu mua:</span>
+                                        <select name="sophieumuathuoc" id="cars" class="">
+                                                <option value="<?=$sophieumuathuoc2?>"><?=$sophieumuathuoc2?></option>
+                                                <?php 
+                                                        $sql = 'SELECT SoPhieuMua FROM PhieuDatMua';
+                                                    $employeeList = executeResult($sql);
+                                                    foreach ($employeeList as $epl) {
+                                                            echo '<option value= '.$epl['SoPhieuMua'].'>
+                                                                    '.$epl['SoPhieuMua'].'
+                                                                    </option>
+                                                                    '  ;                        
+                                                    }
+                                                ?>
+                                            </select>
                                     </div>
                                     <div class="login-tenkho login-ncc"><span class = "label label5" >Mã thuốc:</span>
-                                        <select name="cars" id="cars" class="">
-                                            <option value="maianh">11/28/2012</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="audi">Audi</option>
-                                        </select>
+                                        <select name="mathuoc" id="cars" >
+                                                <option value="<?=$mathuoc2?>"><?=$mathuoc2?></option>
+                                                <?php 
+                                                        $sql = 'SELECT MaThuoc FROM Thuoc';
+                                                    $thuocList = executeResult($sql);
+                                                    foreach ($thuocList as $thuoc) {
+                                                            echo '<option value= '.$thuoc['MaThuoc'].'>
+                                                                    '.$thuoc['MaThuoc'].'
+                                                                    </option>
+                                                                    '  ;                        
+                                                    }
+                                                ?>
+                                            </select>
                                     </div>
                                     <div class="login-makho login-ncc"><span class = "label label5" >Số lượng:</span>
-                                        <input type="text" name="mancc" id="">
+                                        <input type="text" name="soluong" id="" value="<?=$soluong2?>">
                                     </div>
                                    
                                 </div>
@@ -178,26 +254,35 @@
                                     <li class="form-item5" onclick="out()">Thoat</li>
                                 </ul>
                             </div>
-                       
-                         
-                         
-                    </div>
+  
+                        </div>
+                       </form>
                     <div class="manage-top_right">
                         <div class="value">
                             <table class="table5">
-                                <tr>
-                                  <th width = "5%"></th>
-                                  <th>Số phiếu mua</th>
-                                  <th>Mã thuốc</th> 
-                                  <th>Số lượng</th>  
-    
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td>1</td>
-                                  <td>27/12/2000</td>
-                                  <td>001</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                          <th>Số phiếu mua</th>
+                                          <th>Mã thuốc</th> 
+                                          <th>Số lượng</th>  
+                                    </tr>
+                                </thead>
+                                <tbody>
+<?php 
+    $sql = 'SELECT * FROM ThuocDatMua';
+    $datmuaList = executeResult($sql);
+
+    foreach ($datmuaList as $mua) {
+            echo '<tr>
+                    <td>'.$mua['SoPhieuMua'].'</td>
+                    <td>'.$mua['MaThuoc'].'</td>
+                    <td>'.$mua['SoLuong'].'</td>
+                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?id='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocDatMua('.$mua['id'].')">Delete</div></td>
+                </tr>';                          
+    }
+?>
+                                </tbody>
                                 
                               </table>
                         </div>
@@ -206,19 +291,32 @@
                     </div>
 
                 </div>
-            </form>
+            </div>
         </div>
 <script src="../main.js"></script>
     <script type="text/javascript">
 
 
-        function deleteNhaCC(id) {
+        function deleteDatMua(id) {
             option = confirm('Ban co muon xoa khong?')
             if(!option) {
                 return;
             }
             $.post('delete.php', {
-                        'mancc': id
+                        'sophieumua': id
+             }, function(data) {
+                alert('da xoa thanh cong');
+                location.reload();
+            })
+                }
+
+        function deleteThuocDatMua(id) {
+            option = confirm('Ban co muon xoa khong?')
+            if(!option) {
+                return;
+            }
+            $.post('delete.php', {
+                        'id': id
              }, function(data) {
                 alert('da xoa thanh cong');
                 location.reload();

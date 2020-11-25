@@ -118,143 +118,8 @@
         </div>
         <div class="div2"></div>
         
-        <div id = "madalClick5" class="modal animate"> 
-            <div id="out-form" class="grid grid__form" method="post" action="php/index2.php">
-                <span class="login-title login-title3 login-title5">Thông tin phiếu đặt mua</span>
-                <span class="login-title login-title3 login-title55">Thông tin thuốc đặt mua</span>
-                <div class="manage">
-                    <div class="manage-top">
-                        <div class="manage-top_left">
-                            
-                                <div class="manage-top_left-form">
-                                    <div class="login-form login-form5" >
-                                        <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu mua:</span><input type="text" name="mancc" id="">
-                                        </div>
-                                        <div class="login-tenkho login-ncc"><span class = "label label5" >Ngày mua:</span>
-                                            <select name="cars" id="cars" class="">
-                                                <option value="maianh">11/28/2012</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="mercedes">Mercedes</option>
-                                                <option value="audi">Audi</option>
-                                            </select>
-                                        </div>
-                                        <div class="login-tenkho login-ncc"><span class = "label label5" >Mã nhân viên:</span>
-                                            <select name="cars" id="cars" class="">
-                                                <option value="maianh">001</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="mercedes">Mercedes</option>
-                                                <option value="audi">Audi</option>
-                                            </select>
-                                        </div>
-                                        <div class="login-tenkho login-ncc"><span class = "label label5" >Nhà cung cấp</span>
-                                            <select name="cars" id="cars" class="">
-                                                <option value="maianh">01</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="mercedes">Mercedes</option>
-                                                <option value="audi">Audi</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-list5">
-                                    <ul class="form-list5">
-                                        <button class="form-item5">Tạo mới</button>
-                                        <button class="form-item5">Lưu</button>
-                                        <button class="form-item5">Sửa</button>
-                                        <button class="form-item5">Xóa</button>
-                                        <li class="form-item5" onclick="out5()">Thoat</li>
-                                    </ul>
-                                </div>
-                           
-                             
-                             
-                        </div>
-                        <div class="manage-top_right">
-                            <div class="value">
-                                <table class="table5">
-                                    <tr>
-                                      <th width = "5%"></th>
-                                      <th>Số phiếu mua</th>
-                                      <th>Ngày mua</th> 
-                                      <th>Mã nhân viên</th>
-                                      <th>Mã nhà cung cấp</th>  
         
-                                    </tr>
-                                    <tr>
-                                      <td></td>
-                                      <td>1</td>
-                                      <td>27/12/2000</td>
-                                      <td>001</td>
-                                      <td>01</td>
-
-                                    </tr>
-                                    
-                                  </table>
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="manage-top manage-bottom">
-                        <div class="manage-top_left">
-                            
-                            <div class="manage-top_left-form">
-                                <div class="login-form login-form5" >
-                                    <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu mua:</span><input type="text" name="mancc" id="">
-                                    </div>
-                                    <div class="login-tenkho login-ncc"><span class = "label label5" >Mã thuốc:</span>
-                                        <select name="cars" id="cars" class="">
-                                            <option value="maianh">11/28/2012</option>
-                                            <option value="saab">Saab</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="audi">Audi</option>
-                                        </select>
-                                    </div>
-                                    <div class="login-makho login-ncc"><span class = "label label5" >Số lượng:</span>
-                                        <input type="text" name="mancc" id="">
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                            <div class="box-list5">
-                                <ul class="form-list5">
-                                    <li class="form-item5">Tạo mới</li>
-                                    <li class="form-item5">Lưu</li>
-                                    <li class="form-item5">Sửa</li>
-                                    <li class="form-item5">Xóa</li>
-                                    <li class="form-item5" onclick="out5()">Thoat</li>
-                                </ul>
-                            </div>
-                       
-                         
-                         
-                    </div>
-                    <div class="manage-top_right">
-                        <div class="value">
-                            <table class="table5">
-                                <tr>
-                                  <th width = "5%"></th>
-                                  <th>Số phiếu mua</th>
-                                  <th>Mã thuốc</th> 
-                                  <th>Số lượng</th>  
-    
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td>1</td>
-                                  <td>27/12/2000</td>
-                                  <td>001</td>
-                                </tr>
-                                
-                              </table>
-                        </div>
-                       
-                    </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div id = "madalClick6" class="modal animate"> 
+        <!-- <div id = "madalClick6" class="modal animate"> 
             <div id="out-form" class="grid grid__form" method="post" action="php/index2.php">
                 <span class="login-title login-title3 login-title5">Thông tin bảng báo giá</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc báo giá</span>
@@ -805,7 +670,7 @@
     
                     </div>   
                 </div>
-        </div>
+        </div> -->
     </div>
     <script src="main.js"></script>
 </body>

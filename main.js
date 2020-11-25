@@ -1,6 +1,5 @@
 function UpdatePill() {
-    document.getElementById('madalClick').style.visibility = 'inherit';
-    document.getElementById('madalClick').style.display = 'flex';
+    window.open("./php/KhoPill.php","_self")
 
 }
 function UpdateEmployee() {
