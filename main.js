@@ -4,8 +4,7 @@ function UpdatePill() {
 
 }
 function UpdateEmployee() {
-    document.getElementById('madalClick1').style.visibility = 'inherit';
-    document.getElementById('madalClick1').style.display = 'flex';
+    window.open("./php/Employee.php","_self")
 }
 
 function UpdateKhoaDT() {
@@ -49,12 +48,12 @@ function quanLyHuy() {
 
 
 // TODO: OUT
-function out() {
-    document.getElementById('madalClick').style.visibility = 'hidden';
-    document.getElementById('madalClick').style.display = 'none';
+// function out() {
+//     document.getElementById('madalClick').style.visibility = 'hidden';
+//     document.getElementById('madalClick').style.display = 'none';
 
-}
-function out1() {
+// }
+function out() {
     window.open("../index1.php","_self")
 }
 
@@ -101,5 +100,28 @@ function out9() {
 
 
 
+function New() {
+    window.open("Employee.php","_self")
+}
+
+function New2() {
+    window.open("KhoPill.php","_self")
+}
+
+function New3() {
+    window.open("KhoaDT.php","_self")
+}
+
+function New4() {
+    window.open("NhaCC.php","_self")
+}
+
+function New5() {
+    window.open("Pill.php","_self")
+}
+
+function New6() {
+    window.open("QLDatMua.php","_self")
+}
 
 

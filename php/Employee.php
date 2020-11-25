@@ -1,13 +1,11 @@
 <?php 
-    $tennv = $diachi = $gioitinh = $ngaysinh = $sodienthoai = "";
+    $manv = $tennv = $diachi = $gioitinh = $ngaysinh = $sodienthoai = "";
 	require_once ('dbhelp.php');
-	$id = $GET['manv'];
-	echo $id;
+	$manv1 = $_GET['manv'];
     if (!empty($_POST)) {
-
-
     	if (isset($_POST['manv'])) {
     		$manv = $_POST['manv'];
+    		echo $manv;
     	}
 
     	if (isset($_POST['tennv'])) {
@@ -38,26 +36,37 @@
     	$gioitinh = str_replace('\'','\\\'', $gioitinh);
     	$ngaysinh = str_replace('\'','\\\'', $ngaysinh);
     	$sodienthoai = str_replace('\'','\\\'', $sodienthoai);
-    	$sql = "INSERT INTO NhanVien(MaNV,TenNV,DiaChi,GioiTinh,NgaySinh,SoDT)
+	echo $manv;
+
+    	if ($manv != '' &&  $manv == $manv1) {
+    		//update 
+    		echo $manv;
+    		$sql = "UPDATE NhanVien SET MaNV = '$manv', TenNV ='$tennv',  DiaChi= '$diachi', GioiTinh='$gioitinh', NgaySinh='$ngaysinh', SoDT='$sodienthoai' WHERE MaNV = " .$manv;
+    		echo "b";
+    	}else {
+    		//insert
+    		$sql = "INSERT INTO NhanVien(MaNV,TenNV,DiaChi,GioiTinh,NgaySinh,SoDT)
     			VALUES('$manv', '$tennv', '$diachi', '$gioitinh', '$ngaysinh', '$sodienthoai')";
+    			echo "a";
+    	}
     	execute($sql);
-    	die();
-    }
-    $id = '';
-    if (isset($GET['manv'])) {
-    	$id = $_GET['manv'];
-    	$sql = 'SELECT * FROM NhanVien WHERE MaNV = '. $id;
+}
+
+    if (isset($_GET['manv'])) {
+    	$manv = $_GET['manv'];
+    	
+    	$sql = 'SELECT * FROM NhanVien WHERE MaNV = '. $manv;
     	$employeeList = executeResult($sql);
     	if ($employeeList != null && count($employeeList) > 0) {
     		$epl = $employeeList[0];
-    		$manv1 = $_POST['MaNV'];
-    		$tennv1 = $_POST['TenNV'];
-    		// $diachi1 = $_POST['DiaChi'];
-    		// $gioitinh1 = $_POST['GioiTinh'];
-    		// $ngaysinh1 = $_POST['NgaySinh'];
-    		// $sodienthoai1 = $_POST['SoDT'];
+    		$manv2 = $epl['MaNV'];
+    		$tennv2 = $epl['TenNV'];
+    		$diachi2 = $epl['DiaChi'];
+    		$gioitinh2 = $epl['GioiTinh'];
+    		$ngaysinh2= $epl['NgaySinh'];
+    		$sodienthoai2 = $epl['SoDT'];
     	} else {
-    		$id = '';
+
     	}
     }
  ?>
@@ -71,30 +80,31 @@
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-5.14.0-web/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id = "" class=" animate"> 
-            <div id="out-form2" class="grid grid__form" method="post" action="" >
+	<div id = "" class="modal animate"> 
+            <div id="out-form2" class="grid grid__form" >
                 <div class="form-login">
                 	<form method="post" action="">
 	                    <div class="login">
 	                        <span class="login-title login-title10">Cập nhập nhân viên</span>
 	                        <div class="login-form_flex">
 	                            <div class="login-form">
-	                                <div class="login-makho "><span class = "label" >Mã NV:</span><input type="text" name="manv" id="manv" value="<?=$manv1?>">
+	                                <div class="login-makho "><span class = "label" >Mã NV:</span><input type="text" name="manv" id="manv" value="<?=$manv2?>">
 	                                </div>
-	                                <div class="login-tenkho login-all"><span class = "label" >Tên NV:</span><input type="text" name="tennv" id="tennv" value="<?=$tennv1?>">
+	                                <div class="login-tenkho login-all"><span class = "label" >Tên NV:</span><input type="text" name="tennv" id="tennv" value="<?=$tennv2?>">
 	                                </div>
-	                                <div class="login-tenkho "><span class = "label" >Địa chỉ:</span><input type="text" name="diachi" id="diachi">
+	                                <div class="login-tenkho "><span class = "label" >Địa chỉ:</span><input type="text" name="diachi" id="diachi" value="<?=$diachi2?>">
 	                                </div>
 	                            </div>
 	                            <div class="login-form">
-	                                <div class="login-makho "><span class = "label" >Giới tính:</span><input type="text" name="gioitinh" id="gender">
+	                                <div class="login-makho "><span class = "label" >Giới tính:</span><input type="text" name="gioitinh" id="gender" value="<?=$gioitinh2?>">
 	                                </div>
 	                                <div class="login-tenkho login-all"><span class = "label" >Ngày sinh:</span>
-	                                    <input type="text" name="date" id="date2">
+	                                    <input type="text" name="date" id="date2" value="<?=$ngaysinh2?>">
 	                                </div>
-	                                <div class="login-tenkho "><span class = "label" >Số điện thoại:</span><input type="text" name="sodienthoai" id="phone">
+	                                <div class="login-tenkho "><span class = "label" >Số điện thoại:</span><input type="text" name="sodienthoai" id="phone" value="<?=$sodienthoai2?>">
 	                                </div>
 	                            </div>
 
@@ -102,9 +112,9 @@
 	                    </div>
 	                    <div class="box-list box-list1">
 	                         <ul class="form-list form-list1">
-	                            <button class="form-item1">Tạo mới</button>
+	                            <li class="form-item1" onclick="New()">Tạo mới</li>
 	                            <button class="form-item1" onclick="clickSave1()">Lưu</button>
-	                            <li class="form-item1" onclick="out1()">Thoat</li>
+	                            <li class="form-item1" onclick="out()">Thoat</li>
 	                        </ul>
 	                    </div>
                     </form>
@@ -118,8 +128,6 @@
                                 <th>Giới tính</th>
                                 <th>Ngày sinh</th>
                                 <th>Số điện thoại</th>
-                                <th></th>
-                                <th></th>
                             </tr>
                           </thead>
                           <tbody  id="table2">
@@ -136,8 +144,8 @@
                     <td>'.$epl['GioiTinh'].'</td>
                     <td>'.$epl['NgaySinh'].'</td>
                     <td>'.$epl['SoDT'].'</td>
-                    <td><button class="btn10" onclick=\'window.open("Employee.php?id ='.$epl['MaNV'].'","_self")\'>Edit</button></td>
-                    <td><button class="btn10">Delete</button></td>
+                    <td><button class="btn11" onclick=\'window.open("Employee.php?manv='.$epl['MaNV'].'","_self")\'>Edit</button></td>
+                    <td><button class="btn11" onclick="deleteNhanVien('.$epl['MaNV'].')">Delete</button></td>
                 </tr>';                          
     }
 ?>
@@ -150,5 +158,21 @@
             </div>
         </div>
 <script src="../main.js"></script>
+	<script type="text/javascript">
+
+
+		function deleteNhanVien(id) {
+			option = confirm('Ban co muon xoa khong?')
+			if(!option) {
+				return;
+			}
+    		$.post('delete.php', {
+        				'manv': id
+   			 }, function(data) {
+        		alert('da xoa thanh cong');
+        		location.reload();
+    		})
+				}
+	</script>			
 </body>
 </html>
