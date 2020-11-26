@@ -183,7 +183,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php 
+    <?php 
 if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
     $sql = 'SELECT * FROM PhieuDatMua WHERE NgayMua LIKE "%'.$_GET['timkiem'].'%"';
     }else {

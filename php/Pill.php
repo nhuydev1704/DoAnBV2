@@ -112,12 +112,10 @@
                             
                             <div class="login-tenkho login-ncc"><span class = "label" >Ngày sản xuất:</span>
                                 <input type="date" id="start" name="ngaysx"
-                                           value="2018-07-22"
                                            min="2010-01-01" max="2020-12-31" value="<?=$ngaysx2?>">
                             </div>
                             <div class="login-makho login-ncc"><span class = "label" >Hạn sử dụng:</span>
                                 <input type="date" id="start" name="hansd"
-                                           value="2018-07-22"
                                            min="2010-01-01" max="2020-12-31" value="<?=$hansd2?>">
                             </div>
                             <div class="login-tenkho login-ncc"><span class = "label" >Nhà sản xuất</span>

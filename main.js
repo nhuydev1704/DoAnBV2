@@ -113,3 +113,12 @@ function New5() {
 function New6() {
     window.open("QLDatMua.php", "_self")
 }
+
+function New7() {
+    window.open("QLBaoGia.php", "_self")
+}
+
+
+function New8() {
+    window.open("QLBaoGia.php", "_self")
+}
