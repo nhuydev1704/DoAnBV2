@@ -321,8 +321,6 @@ if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
         </div>
 <script src="../main.js"></script>
     <script type="text/javascript">
-
-
         function deleteDatMua(id) {
             option = confirm('Ban co muon xoa khong?')
             if(!option) {
