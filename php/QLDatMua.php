@@ -1,8 +1,8 @@
 <?php 
-    $sophieumua = $id = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = "";
+    $sophieumua = $id = $id1 = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = "";
     require_once ('dbhelp.php');
     $sophieumua1 = $_GET['sophieumua'];
-    $id = $_GET['id'];
+    $id1 = $_GET['id'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieumua'])) {
             $sophieumua = $_POST['sophieumua'];
@@ -107,7 +107,7 @@
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-5.14.0-web/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/main.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../assets/js/jquery.js"></script>
 </head>
 <body>
    <div id = "" class="modal"> 
