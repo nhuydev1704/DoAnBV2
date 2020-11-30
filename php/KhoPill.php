@@ -1,5 +1,5 @@
 <?php 
-    $makho = $tenkho = "";
+    $makho = $tenkho = $makho2 = $tenkho2 = $makho1 = "";
     require_once ('dbhelp.php');
     $makho1 = $_GET['makho'];
     if (!empty($_POST)) {
@@ -9,7 +9,6 @@
 
         if (isset($_POST['tenkho'])) {
             $tenkho = $_POST['tenkho'];
-
         }
         $makho = str_replace('\'','\\\'', $makho);
         $tenkho = str_replace('\'','\\\'', $tenkho);
@@ -87,8 +86,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$pill['MaKho'].'</td>
                     <td>'.$pill['TenKho'].'</td>
                 
-                    <td><div class="btn10" onclick=\'window.open("KhoPill.php?makho='.$pill['MaKho'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn10" onclick="deleteKhoPill('.$pill['MaKho'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("KhoPill.php?makho='.$pill['MaKho'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteKhoPill('.$pill['MaKho'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>

@@ -21,18 +21,18 @@
         <div class="div1" style="color: white;">
                 <span><img class="div1-img" src="./assets/img/logo.png" alt=""></span>
                 
-                <span style="--i:1;"> Phân </span>
-                <span style="--i:2;"> Tích </span>
-                <span style="--i:3;"> Thiết </span>
-                <span style="--i:4;"> Kế </span>
-                <span style="--i:5;"> Hệ </span>
-                <span style="--i:6;"> Thống </span>
-                <span style="--i:7;"> Quản </span>
-                <span style="--i:8;"> Lý </span>
-                <span style="--i:9;"> Quầy </span>
-                <span style="--i:10;"> Thuốc </span>
-                <span style="--i:11;"> Bệnh </span>
-                <span style="--i:12;"> Viện </span>
+                <span> Phân </span>
+                <span> Tích </span>
+                <span> Thiết </span>
+                <span> Kế </span>
+                <span> Hệ </span>
+                <span> Thống </span>
+                <span> Quản </span>
+                <span> Lý </span>
+                <span> Quầy </span>
+                <span> Thuốc </span>
+                <span> Bệnh </span>
+                <span> Viện </span>
         </div>
         <div class="nhom8">NGUYỄN NHƯ Ý</div>
 

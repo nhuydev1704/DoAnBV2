@@ -1,5 +1,5 @@
 <?php 
-    $makhoa = $tenkhoa = "";
+    $makhoa = $tenkhoa = $makhoa2 = $tenkhoa2 = $makhoa1 = "";
     require_once ('dbhelp.php');
     $makhoa1 = $_GET['makhoa'];
     if (!empty($_POST)) {

@@ -1,5 +1,5 @@
 <?php 
-    $mathuoc = $tenthuoc = $donvitinh = $dongia =$ngaysx = $hansd = $nhasx = $soluongton ="";
+    $mathuoc = $tenthuoc = $donvitinh = $dongia =$ngaysx = $hansd = $nhasx = $soluongton = $mathuoc2 = $tenthuoc2 = $donvitinh2 = $dongia2 =$ngaysx2 = $hansd2 = $nhasx2 = $soluongton2 = $mathuoc1 ="";
 	require_once ('dbhelp.php');
 	$mathuoc1 = $_GET['mathuoc'];
     if (!empty($_POST)) {

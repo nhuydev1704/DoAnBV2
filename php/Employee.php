@@ -1,5 +1,5 @@
 <?php 
-    $manv = $tennv = $diachi = $gioitinh = $ngaysinh = $sodienthoai = "";
+    $manv = $tennv = $diachi = $gioitinh = $ngaysinh = $sodienthoai = $manv2 = $tennv2 = $diachi2 = $gioitinh2 = $ngaysinh2 = $sodienthoai2 = $manv1 = "";
 	require_once ('dbhelp.php');
 	$manv1 = $_GET['manv'];
     if (!empty($_POST)) {

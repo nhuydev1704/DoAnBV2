@@ -1,5 +1,5 @@
 <?php 
-    $mancc = $tenncc = $diachi = $sodienthoai = "";
+    $mancc = $tenncc = $diachi = $sodienthoai = $mancc2 = $tenncc2 = $diachi2 = $sodienthoai2 = "";
 	require_once ('dbhelp.php');
 	$mancc1 = $_GET['mancc'];
     if (!empty($_POST)) {

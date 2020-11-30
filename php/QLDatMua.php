@@ -1,5 +1,5 @@
 <?php 
-    $sophieumua = $id = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = "";
+    $sophieumua = $id = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = "";
     require_once ('dbhelp.php');
     $sophieumua1 = $_GET['sophieumua'];
     $id = $_GET['id'];
