@@ -147,7 +147,7 @@
                                        
                                     </div>
                                 </div>
-                                <div class="box-list5">
+                                <div class="box-list5" >
                                     <ul class="form-list5">
                                         <li class="form-item5" onclick="New7()">Tạo mới</li>
                                         <button class="form-item5">Lưu</button>

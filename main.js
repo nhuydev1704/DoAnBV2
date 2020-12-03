@@ -122,3 +122,7 @@ function New7() {
 function New8() {
     window.open("QLBaoGia.php", "_self")
 }
+
+function New9() {
+    window.open("QLNhapThuoc.php", "_self")
+}

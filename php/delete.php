@@ -71,5 +71,25 @@
 		echo "Xoa thanh cong";
 
 	}
+
+///
+	if (isset($_POST['phieunhap'])) {
+		$id = $_POST['phieunhap'];
+		$sql = 'DELETE FROM PhieuNhap WHERE id = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+
+	if (isset($_POST['thuocnhap'])) {
+		$id = $_POST['thuocnhap'];
+		$sql = 'DELETE FROM ThuocNhap WHERE id1 = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+	///
  ?>
 
