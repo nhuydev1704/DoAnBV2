@@ -126,3 +126,12 @@ function New8() {
 function New9() {
     window.open("QLNhapThuoc.php", "_self")
 }
+
+function New10() {
+    window.open("QLXuatThuoc.php", "_self")
+}
+
+
+function New11() {
+    window.open("QLXuatThuoc.php", "_self")
+}

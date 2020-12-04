@@ -1,5 +1,5 @@
 <?php 
-    $sophieubaogia = $ngaybaogia = $mancc = $sophieubaogia1 = $mathuoc = $id = $id1 = "";
+    $sophieubaogia = $ngaybaogia = $mancc = $sophieubaogia1 = $mathuoc = $id = $id1 = $sophieubaogia2 = $ngaybaogia2 = $mancc2 = $sophieubaogia3 = $mathuoc2 ="";
     require_once ('dbhelp.php');
     $id = $_GET['id'];
     $id1 = $_GET['id1'];
@@ -86,10 +86,10 @@
         
         $sql = 'SELECT * FROM ThuocBaoGia WHERE id1 = '. $id1;
         $baogiaList1 = executeResult($sql);
-        if ($baogiaLis1 != null && count($baogiaList1) > 0) {
+        if ($baogiaList1 != null && count($baogiaList1) > 0) {
             $ncc1 = $baogiaList1[0];
             $sophieubaogia3 = $ncc1['SoPhieuBG'];
-            $ngaybaogia2 = $ncc1['MaThuoc'];
+            $mathuoc2 = $ncc1['MaThuoc'];
         } else {
 
         }

@@ -1,8 +1,9 @@
 <?php 
-    $sophieu = $id = $id1 = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $mancc2 = $sophieu2 = $mathuoc2 = $sophieu3 = "";
+    $sophieu = $id = $id1 = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $ncc2 = $sophieu2 = $mathuoc2 = $sophieu3 = "";
     require_once ('dbhelp.php');
     $sophieu3 = $_GET['sophieu'];
-    $id1 = $_GET['id'];
+    $id = $_GET['id'];
+    $id1 = $_GET['id1'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieu'])) {
             $sophieu = $_POST['sophieu'];
@@ -98,9 +99,9 @@
         $id1 = $_GET['id1'];
         
         $sql = 'SELECT * FROM ThuocNhap WHERE id1 = '. $id1;
-        $nccList = executeResult($sql);
-        if ($nccList != null && count($nccList) > 0) {
-            $ncc = $nccList[0];
+        $ncc1List = executeResult($sql);
+        if ($ncc1List != null && count($ncc1List) > 0) {
+            $ncc = $ncc1List[0];
             $sophieu3 = $ncc['SoPhieuNhap'];
             $mathuoc2 = $ncc['MaThuoc'];
             $soluong2 = $ncc['SoLuong'];
@@ -206,7 +207,7 @@
                                        
                                     </div>
                                 </div>
-                                <div class="box-list5">
+                                <div class="box-list5" style="margin-top: 12px;">
                                     <ul class="form-list5">
                                         <li class="form-item5" onclick="New9()">Tạo mới</li>
                                         <button class="form-item5">Lưu</button>
@@ -245,7 +246,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
     foreach ($datmuaList as $mua) {
             echo '<tr>
                     <td>'.$mua['SoPhieuNhap'].'</td>
-                    <td>'.$mua['NgayNhap'].'</td>
+                    <td width="20%">'.$mua['NgayNhap'].'</td>
                     <td>'.$mua['MaNV'].'</td>
                     <td>'.$mua['MaKho'].'</td>
                     <td>'.$mua['MaKhoa'].'</td>
@@ -262,7 +263,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                            
                         </div>
                         <form action="" method="get" class="timkiem" style="
-    top: 22px;
+    top: 10px;
     left: 59%;
 ">
                         
@@ -308,7 +309,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                                                 ?>
                                             </select>
                                     </div>
-                                    <div class="login-makho login-ncc"><span class = "label label5" >Số lượng:</span><input type="text" name="soluong" id="" value="<?=$soluong2?>"><?=$soluong2?>
+                                    <div class="login-makho login-ncc"><span class = "label label5" >Số lượng:</span><input type="text" name="soluong" id="" value="<?=$soluong2?>">
                                     </div>
                                 </div>
                             </div>
@@ -352,7 +353,7 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
                     <td>'.$mua['SoPhieuNhap'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
                     <td>'.$mua['SoLuong'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLNhapThuoc.php?id='.$mua['id1'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLNhapThuoc.php?id1='.$mua['id1'].'","_self")\'>Edit</div></td>
                     <td><div class="btn11" onclick="deleteThuocNhap('.$mua['id1'].')">Delete</div></td>
                 </tr>';                          
     }
@@ -366,11 +367,11 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
                     </div>
                     </div>
                     <form action="" method="get" class="timkiem" style="
-    top: 52%;
+    top: 59%;
     left: 59%;
 ">
                         
-                        <div class="login-tenkho "><input type="text" name="timkiem2" placeholder="Ma thuoc">
+                        <div class="login-tenkho "><input type="text" name="timkiem1" placeholder="Ma thuoc">
                             <button>Tim</button></div>
                         </form>
                 </div>   
