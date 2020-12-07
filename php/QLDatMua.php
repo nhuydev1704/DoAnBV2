@@ -1,8 +1,8 @@
 <?php 
-    $sophieumua = $id = $id1 = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = "";
+    $sophieumua  = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = $sophieumuathuoc1 ="";
     require_once ('dbhelp.php');
     $sophieumua1 = $_GET['sophieumua'];
-    $id1 = $_GET['id'];
+    $sophieumuathuoc1 = $_GET['sophieumuathuoc'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieumua'])) {
             $sophieumua = $_POST['sophieumua'];
@@ -46,7 +46,7 @@
         if ($sophieumua != '' &&  $sophieumua == $sophieumua1) {
             //update 
             $sql = "UPDATE PhieuDatMua SET SoPhieuMua = '$sophieumua', NgayMua ='$ngaymua',  MaNV= '$manv', MaNCC='$ncc' WHERE SoPhieuMua = " .$sophieumua;
-        }else {
+        }else if ($sophieumua != ''){
             //insert
             $sql = "INSERT INTO PhieuDatMua(SoPhieuMua,NgayMua,MaNV,MaNCC)
                 VALUES('$sophieumua', '$ngaymua', '$manv','$ncc')";
@@ -55,10 +55,10 @@
 
         //
         //
-        if ($id != '') {
+        if ($sophieumuathuoc != '' &&  $sophieumuathuoc == $sophieumuathuoc1) {
             //update 
-            $sql1 = "UPDATE ThuocDatMua SET SoPhieuMua = '$sophieumuathuoc', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id = " .$id;
-        }else {
+            $sql1 = "UPDATE ThuocDatMua SET SoPhieuMua = '$sophieumuathuoc', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE  SoPhieuMua= " .$sophieumuathuoc;
+        }else if($sophieumuathuoc != '') {
             //insert
             $sql1 = "INSERT INTO ThuocDatMua(SoPhieuMua,MaThuoc,SoLuong)
                 VALUES('$sophieumuathuoc', '$mathuoc', '$soluong')";
@@ -67,9 +67,8 @@
 }
 
     if (isset($_GET['sophieumua'])) {
-        $sophieumua = $_GET['sophieumua'];
-        
-        $sql = 'SELECT * FROM PhieuDatMua WHERE SoPhieuMua = '. $sophieumua;
+        $id = $_GET['sophieumua'];
+        $sql = 'SELECT * FROM PhieuDatMua WHERE SoPhieuMua = '. $id;
         $nccList = executeResult($sql);
         if ($nccList != null && count($nccList) > 0) {
             $ncc = $nccList[0];
@@ -82,13 +81,13 @@
         }
     }
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    if (isset($_GET['sophieumuathuoc'])) {
+        $id2 = $_GET['sophieumuathuoc'];
         
-        $sql = 'SELECT * FROM ThuocDatMua WHERE id = '. $id;
-        $nccList = executeResult($sql);
-        if ($nccList != null && count($nccList) > 0) {
-            $ncc = $nccList[0];
+        $sql = 'SELECT * FROM ThuocDatMua WHERE SoPhieuMua = '. $id2;
+        $nccList1 = executeResult($sql);
+        if ($nccList1 != null && count($nccList1) > 0) {
+            $ncc = $nccList1[0];
             $sophieumuathuoc2 = $ncc['SoPhieuMua'];
             $mathuoc2 = $ncc['MaThuoc'];
             $soluong2 = $ncc['SoLuong'];
@@ -291,13 +290,13 @@ if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
    
     $datmuaList = executeResult($sql);
 
-    foreach ($datmuaList as $mua) {
+    foreach ($datmuaList as $mua1) {
             echo '<tr>
-                    <td>'.$mua['SoPhieuMua'].'</td>
-                    <td>'.$mua['MaThuoc'].'</td>
-                    <td>'.$mua['SoLuong'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?id='.$mua['id'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocDatMua('.$mua['id'].')">Delete</div></td>
+                    <td>'.$mua1['SoPhieuMua'].'</td>
+                    <td>'.$mua1['MaThuoc'].'</td>
+                    <td>'.$mua1['SoLuong'].'</td>
+                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?sophieumuathuoc='.$mua1['SoPhieuMua'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocDatMua('.$mua1['SoPhieuMua'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>

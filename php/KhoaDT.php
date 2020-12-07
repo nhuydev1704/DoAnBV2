@@ -17,7 +17,7 @@
         if ($makhoa != '' &&  $makhoa == $makhoa1) {
             //update 
             $sql = "UPDATE KhoaDT SET MaKhoa = '$makhoa', TenKhoa ='$tenkhoa'WHERE MaKhoa = " .$makhoa;
-        }else {
+        }else if ($makhoa != ''){
             //insert
             $sql = "INSERT INTO KhoaDT(MaKhoa,TenKhoa)
                 VALUES('$makhoa', '$tenkhoa')";

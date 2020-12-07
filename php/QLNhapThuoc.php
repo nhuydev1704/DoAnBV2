@@ -1,9 +1,8 @@
 <?php 
-    $sophieu = $id = $id1 = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $ncc2 = $sophieu2 = $mathuoc2 = $sophieu3 = "";
+    $sophieu = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $ncc2 = $sophieu2 = $mathuoc2 = $sophieu3 = $sophieu4 = $sophieu5 = "";
     require_once ('dbhelp.php');
-    $sophieu3 = $_GET['sophieu'];
-    $id = $_GET['id'];
-    $id1 = $_GET['id1'];
+    $sophieu4 = $_GET['sophieu'];
+    $sophieu5 = $_GET['sophieu1'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieu'])) {
             $sophieu = $_POST['sophieu'];
@@ -54,10 +53,10 @@
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
         $soluong = str_replace('\'','\\\'', $soluong);
 
-        if ($sophieu != '' &&  $sophieu == $sophieu3) {
+        if ($sophieu != '' &&  $sophieu == $sophieu4) {
             //update 
-            $sql = "UPDATE PhieuNhap SET SoPhieuNhap = '$sophieu', NgayNhap ='$ngay',  MaNV= '$manv', MaKho='$makho', MaNCC='$mancc' WHERE id = " .$id;
-        }else {
+            $sql = "UPDATE PhieuNhap SET SoPhieuNhap = '$sophieu', NgayNhap ='$ngay',  MaNV= '$manv', MaKho='$makho', MaNCC='$mancc' WHERE SoPhieuNhap = " .$sophieu;
+        }else if ($sophieu != ''){
             //insert
             $sql = "INSERT INTO PhieuNhap(SoPhieuNhap,NgayNhap,MaNV,MaKho,MaKhoa,MaNCC)
                 VALUES('$sophieu', '$ngay', '$manv','$makho','$makhoa','$mancc')";
@@ -66,10 +65,10 @@
 
         //
         //
-        if ($id1 != '') {
+        if ($sophieu1 != '' && $sophieu1 == $sophieu5) {
             //update 
-            $sql1 = "UPDATE ThuocNhap SET SoPhieuNhap = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id1 = " .$id1;
-        }else {
+            $sql1 = "UPDATE ThuocNhap SET SoPhieuNhap = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE SoPhieuNhap = " .$sophieu1;
+        }else if ($sophieu1 != ''){
             //insert
             $sql1 = "INSERT INTO ThuocNhap(SoPhieuNhap,MaThuoc,SoLuong)
                 VALUES('$sophieu1', '$mathuoc', '$soluong')";
@@ -77,10 +76,10 @@
         execute($sql1);
 }
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    if (isset($_GET['sophieu'])) {
+        $id = $_GET['sophieu'];
         
-        $sql = 'SELECT * FROM PhieuNhap WHERE id = '. $id;
+        $sql = 'SELECT * FROM PhieuNhap WHERE SoPhieuNhap = '. $id;
         $nccList = executeResult($sql);
         if ($nccList != null && count($nccList) > 0) {
             $ncc = $nccList[0];
@@ -95,10 +94,10 @@
         }
     }
 
-    if (isset($_GET['id1'])) {
-        $id1 = $_GET['id1'];
+    if (isset($_GET['sophieu1'])) {
+        $id1 = $_GET['sophieu1'];
         
-        $sql = 'SELECT * FROM ThuocNhap WHERE id1 = '. $id1;
+        $sql = 'SELECT * FROM ThuocNhap WHERE SoPhieuNhap = '. $id1;
         $ncc1List = executeResult($sql);
         if ($ncc1List != null && count($ncc1List) > 0) {
             $ncc = $ncc1List[0];
@@ -251,8 +250,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$mua['MaKho'].'</td>
                     <td>'.$mua['MaKhoa'].'</td>
                     <td>'.$mua['MaNCC'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLNhapThuoc.php?id='.$mua['id'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deletePhieuNhap('.$mua['id'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLNhapThuoc.php?sophieu='.$mua['SoPhieuNhap'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deletePhieuNhap('.$mua['SoPhieuNhap'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>
@@ -353,8 +352,8 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
                     <td>'.$mua['SoPhieuNhap'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
                     <td>'.$mua['SoLuong'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLNhapThuoc.php?id1='.$mua['id1'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocNhap('.$mua['id1'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLNhapThuoc.php?sophieu1='.$mua['SoPhieuNhap'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocNhap('.$mua['SoPhieuNhap'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>  

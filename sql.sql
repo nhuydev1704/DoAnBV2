@@ -1,0 +1,142 @@
+
+
+USE BenhVien1
+
+ 
+CREATE TABLE NhanVien(
+	MaNV CHAR(50) PRIMARY KEY,
+	TenNV NVARCHAR(50),
+	DiaChi NVARCHAR(50),
+	GioiTinh NCHAR(50),
+	NgaySinh DATE,
+	SoDT CHAR(50));
+
+CREATE TABLE KhoaDT(
+	MaKhoa CHAR(50) PRIMARY KEY,
+	TenKhoa NVARCHAR(50));
+
+
+CREATE TABLE KhoThuoc(
+	MaKho CHAR(50) PRIMARY KEY,
+	TenKho NVARCHAR(50));
+
+
+CREATE TABLE Thuoc( 
+	MaThuoc CHAR(50) PRIMARY KEY,
+	TenThuoc NVARCHAR(50),
+	DonViTinh CHAR(50),
+	DonGia FLOAT,
+	NgaySanXuat DATE,
+	HanSuDung DATE,
+    NhaSanXuat NVARCHAR(50),
+	SoLuongTon CHAR(50));
+
+
+CREATE TABLE NhaCungCap(
+	MaNCC CHAR(50) PRIMARY KEY,
+	TenNCC NVARCHAR(50),
+	DiaChi NVARCHAR(50),
+	SoDT CHAR(50));
+
+
+CREATE TABLE PhieuDatMua(
+	SoPhieuMua CHAR(50) PRIMARY KEY,
+	NgayMua DATE,
+	MaNV CHAR(50),
+	MaNCC CHAR(50),
+	FOREIGN KEY(MaNV) REFERENCES NhanVien(MaNV),
+	FOREIGN KEY(MaNCC) REFERENCES NhaCungCap(MaNCC)
+);
+
+
+CREATE TABLE ThuocDatMua(
+	SoPhieuMua CHAR(50),
+	MaThuoc CHAR(50),
+	SoLuong VARCHAR(50),
+	FOREIGN KEY(SoPhieuMua) REFERENCES PhieuDatMua(SoPhieuMua),
+	FOREIGN KEY(MaThuoc) REFERENCES Thuoc(MaThuoc)
+	);
+
+
+CREATE TABLE BangBaoGia(
+	SoPhieuBG CHAR(50) PRIMARY KEY,
+	MaNCC CHAR(50),
+	NgayBG DATE,
+	FOREIGN KEY(MaNCC) REFERENCES NhaCungCap(MaNCC)
+);
+
+
+CREATE TABLE ThuocBaoGia(
+	SoPhieuBG CHAR(50),
+	MaThuoc CHAR(50),
+	FOREIGN KEY(SoPhieuBG) REFERENCES BangBaoGia(SoPhieuBG),
+	FOREIGN KEY(MaThuoc) REFERENCES Thuoc(MaThuoc)
+);
+
+
+CREATE TABLE BienBanHuy(
+	SoPhieuBB CHAR(50) PRIMARY KEY,
+	NgayBB DATE,
+	MaNV CHAR(50),
+	MaKho CHAR(50),
+	FOREIGN KEY(MaNV) REFERENCES NhanVien(MaNV),
+	FOREIGN KEY(MaKho) REFERENCES KhoThuoc(MaKho)
+);
+
+
+CREATE TABLE ThuocHuy(
+	SoPhieuBB CHAR(50),
+	MaThuoc CHAR(50),
+	SoLuongHuy VARCHAR(50),
+	FOREIGN KEY(MaThuoc) REFERENCES Thuoc(MaThuoc),
+	FOREIGN KEY(SoPhieuBB) REFERENCES BienBanHuy(SoPhieuBB)
+	);
+
+
+CREATE TABLE PhieuNhap(
+	SoPhieuNhap CHAR(50) PRIMARY KEY,
+	NgayNhap DATE,
+	MaNV CHAR(50),
+	MaKho CHAR(50),
+	MaKhoa CHAR(50),
+	MaNCC CHAR(50),
+	FOREIGN KEY(MaNV) REFERENCES NhanVien(MaNV),
+	FOREIGN KEY(MaKho) REFERENCES KhoThuoc(MaKho),
+	FOREIGN KEY(MaKhoa) REFERENCES KhoaDT(MaKhoa),
+	FOREIGN KEY(MaNCC) REFERENCES NhaCungCap(MaNCC)
+	);
+
+
+CREATE TABLE ThuocNhap(
+	SoPhieuNhap CHAR(50),
+	MaThuoc CHAR(50),
+	SoLuong VARCHAR(50),
+	FOREIGN KEY(SoPhieuNhap) REFERENCES PhieuNhap(SoPhieuNhap),
+	FOREIGN KEY(MaThuoc) REFERENCES Thuoc(MaThuoc)
+	);
+	
+
+
+CREATE TABLE PhieuXuat(
+	SoPhieuXuat CHAR(50) PRIMARY KEY,
+	NgayXuat DATE,
+	MaNV CHAR(50),
+	MaKho CHAR(50),
+	MaKhoa CHAR(50),
+	MaNCC CHAR(50),
+	FOREIGN KEY(MaNV) REFERENCES NhanVien(MaNV),
+	FOREIGN KEY(MaKho) REFERENCES KhoThuoc(MaKho),
+	FOREIGN KEY(MaKhoa) REFERENCES KhoaDT(MaKhoa),
+	FOREIGN KEY(MaNCC) REFERENCES NhaCungCap(MaNCC)
+	);
+
+
+
+CREATE TABLE ThuocXuat(
+	SoPhieuXuat CHAR(50),
+	MaThuoc CHAR(50),
+	SoLuong VARCHAR(50),
+	FOREIGN KEY(SoPhieuXuat) REFERENCES PhieuXuat(SoPhieuXuat),
+	FOREIGN KEY(MaThuoc) REFERENCES Thuoc(MaThuoc)
+	);
+	

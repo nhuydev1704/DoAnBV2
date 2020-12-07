@@ -16,7 +16,7 @@
         if ($makho != '' &&  $makho == $makho1) {
             //update 
             $sql = "UPDATE KhoThuoc SET MaKho = '$makho', TenKho ='$tenkho'WHERE MaKho = " .$makho;
-        }else {
+        }else if($makho != '') {
             //insert
             $sql = "INSERT INTO KhoThuoc(MaKho,TenKho)
                 VALUES('$makho', '$tenkho')";

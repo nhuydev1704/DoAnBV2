@@ -40,7 +40,7 @@
     	if ($manv != '' &&  $manv == $manv1) {
     		//update 
     		$sql = "UPDATE NhanVien SET MaNV = '$manv', TenNV ='$tennv',  DiaChi= '$diachi', GioiTinh='$gioitinh', NgaySinh='$ngaysinh', SoDT='$sodienthoai' WHERE MaNV = " .$manv;
-    	}else {
+    	}else if ($manv != ''){
     		//insert
     		$sql = "INSERT INTO NhanVien(MaNV,TenNV,DiaChi,GioiTinh,NgaySinh,SoDT)
     			VALUES('$manv', '$tennv', '$diachi', '$gioitinh', '$ngaysinh', '$sodienthoai')";
@@ -109,7 +109,7 @@
 	                    <div class="box-list box-list1">
 	                         <ul class="form-list form-list1">
 	                            <li class="form-item1" onclick="New()">Tạo mới</li>
-	                            <button class="form-item1" onclick="clickSave1()">Lưu</button>
+	                            <button class="form-item1">Lưu</button>
 	                            <li class="form-item1" onclick="out()">Thoat</li>
 	                        </ul>
 	                    </div>

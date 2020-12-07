@@ -49,7 +49,7 @@
     	if ($mathuoc != '' &&  $mathuoc == $mathuoc1) {
     		//update 
     		$sql = "UPDATE Thuoc SET MaThuoc = '$mathuoc', TenThuoc ='$tenthuoc',  DonViTinh= '$donvitinh', DonGia='$dongia',NgaySanXuat = '$ngaysx', HanSuDung ='$hansd',  NhaSanXuat= '$nhasx', SoLuongTon='$soluongton' WHERE MaThuoc = " .$mathuoc;
-    	}else {
+    	}else if($mathuoc != ''){
     		//insert
     		$sql = "INSERT INTO Thuoc(MaThuoc,TenThuoc,DonViTinh,DonGia,NgaySanXuat,HanSuDung,NhaSanXuat,SoLuongTon)
     			VALUES('$mathuoc', '$tenthuoc', '$donvitinh','$dongia','$ngaysx', '$hansd', '$nhasx','$soluongton')";

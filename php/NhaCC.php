@@ -28,7 +28,7 @@
     	if ($mancc != '' &&  $mancc == $mancc1) {
     		//update 
     		$sql = "UPDATE NhaCungCap SET MaNCC = '$mancc', TenNCC ='$tenncc',  DiaChi= '$diachi', SoDT='$sodienthoai' WHERE MaNCC = " .$mancc;
-    	}else {
+    	}else if ($mancc != ''){
     		//insert
     		$sql = "INSERT INTO NhaCungCap(MaNCC,TenNCC,DiaChi,SoDT)
     			VALUES('$mancc', '$tenncc', '$diachi','$sodienthoai')";

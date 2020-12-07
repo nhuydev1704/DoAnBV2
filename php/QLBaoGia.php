@@ -1,8 +1,8 @@
 <?php 
-    $sophieubaogia = $ngaybaogia = $mancc = $sophieubaogia1 = $mathuoc = $id = $id1 = $sophieubaogia2 = $ngaybaogia2 = $mancc2 = $sophieubaogia3 = $mathuoc2 ="";
+    $sophieubaogia = $ngaybaogia = $mancc = $sophieubaogia1 = $mathuoc = $id = $id1 = $sophieubaogia2 = $ngaybaogia2 = $mancc2 = $sophieubaogia3 =$sophieubaogia4=$sophieubaogia5= $mathuoc2 ="";
     require_once ('dbhelp.php');
-    $id = $_GET['id'];
-    $id1 = $_GET['id1'];
+    $sophieubaogia4 = $_GET['sophieubaogia'];
+    $sophieubaogia5 = $_GET['sophieubaogia1'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieubaogia'])) {
             $sophieubaogia = $_POST['sophieubaogia'];
@@ -26,50 +26,53 @@
             $mathuoc = $_POST['mathuoc'];
 
         }
-        if (isset($_POST['id'])) {
-            $id = $_POST['id'];
+        // if (isset($_POST['id'])) {
+        //     $id = $_POST['id'];
 
-        }
-        if (isset($_POST['id1'])) {
-            $id1 = $_POST['id1'];
+        // }
+        // if (isset($_POST['id1'])) {
+        //     $id1 = $_POST['id1'];
 
-        }
+        // }
         $sophieubaogia = str_replace('\'','\\\'', $sophieubaogia);
         $ngaybaogia = str_replace('\'','\\\'', $ngaybaogia);
         $mancc = str_replace('\'','\\\'', $mancc);
         $sophieubaogia1 = str_replace('\'','\\\'', $sophieubaogia1);
 
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
-        $id = str_replace('\'','\\\'', $id);
-        $id1 = str_replace('\'','\\\'', $id1);
-
-        if ($id != '') {
+        if ($sophieubaogia != '' && $sophieubaogia == $sophieubaogia4) {
             //update 
-            $sql = "UPDATE BangBaoGia SET SoPhieuBG = '$sophieubaogia', NgayBG ='$ngaybaogia',  MaNCC= '$mancc' WHERE id = " .$id;
-        }else {
+            
+            $sql = "UPDATE BangBaoGia SET SoPhieuBG = '$sophieubaogia', MaNCC= '$mancc',NgayBG ='$ngaybaogia' WHERE SoPhieuBG = " .$sophieubaogia;
+        }else if ($sophieubaogia != ''){
             //insert
-            $sql = "INSERT INTO BangBaoGia(SoPhieuBG,NgayBG,MaNCC)
-                VALUES('$sophieubaogia', '$ngaybaogia', '$mancc')";
+            
+            $sql = "INSERT INTO BangBaoGia(SoPhieuBG,MaNCC,NgayBG)
+                VALUES('$sophieubaogia', '$mancc', '$ngaybaogia')";
         }
         execute($sql);
 
         //
         //
-        if ($id1 != '') {
+        if ($sophieubaogia1 != '' && $sophieubaogia1 == $sophieubaogia5) {
+                // echo "<script type='text/javascript'>alert('update');</script>";
             //update 
-            $sql1 = "UPDATE ThuocBaoGia SET SoPhieuBG = '$sophieubaogia1', MaThuoc ='$mathuoc' WHERE id1 = " .$id1;
-        }else {
+            $sql1 = "UPDATE ThuocBaoGia SET SoPhieuBG = '$sophieubaogia1', MaThuoc ='$mathuoc' WHERE SoPhieuBG = " .$sophieubaogia1;
+
+        }else if($sophieubaogia1 != ''){
             //insert
+                // echo "<script type='text/javascript'>alert('insert');</script>";
+            //
             $sql1 = "INSERT INTO ThuocBaoGia(SoPhieuBG,MaThuoc)
                 VALUES('$sophieubaogia1', '$mathuoc')";
         }
         execute($sql1);
 }
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    if (isset($_GET['sophieubaogia'])) {
+        $id = $_GET['sophieubaogia'];
         
-        $sql = 'SELECT * FROM BangBaoGia WHERE id = '. $id;
+        $sql = 'SELECT * FROM BangBaoGia WHERE SoPhieuBG = '. $id;
         $baogiaList = executeResult($sql);
         if ($baogiaList != null && count($baogiaList) > 0) {
             $ncc = $baogiaList[0];
@@ -81,10 +84,10 @@
         }
     }
 
-    if (isset($_GET['id1'])) {
-        $id1 = $_GET['id1'];
+    if (isset($_GET['sophieubaogia1'])) {
+        $id1 = $_GET['sophieubaogia1'];
         
-        $sql = 'SELECT * FROM ThuocBaoGia WHERE id1 = '. $id1;
+        $sql = 'SELECT * FROM ThuocBaoGia WHERE SoPhieuBG = '. $id1;
         $baogiaList1 = executeResult($sql);
         if ($baogiaList1 != null && count($baogiaList1) > 0) {
             $ncc1 = $baogiaList1[0];
@@ -116,14 +119,15 @@
                 <div class="manage" style="
     width: 100%;
 ">
-                    <form class="manage-top" method="post" action="">
-                        <div class="manage-top_left" style="
+                    <div class="manage-top">
+                        <form class="manage-top_left" method="post" action="" style="
     width: 45%;
 ">
                             
                                 <div class="manage-top_left-form">
                                     <div class="login-form login-form5" style="transform: translateY(-19px);">
-                                        <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu báo giá:</span><input type="text" name="sophieubaogia" id="" value="<?=$sophieubaogia2?>">
+                                        <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu báo giá:</span>
+                                            <input type="text" name="sophieubaogia" id="" value="<?=$sophieubaogia2?>">
                                         </div>
                                         <div class="login-tenkho login-ncc"><span class = "label label5" >Ngày báo giá:</span>
                                             <input type="date" id="start" name="ngaybaogia"
@@ -157,7 +161,7 @@
                            
                              
                              
-                        </div>
+                        </form>
                         <div class="manage-top_right" style="
     width: 45%;
 ">
@@ -185,8 +189,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$mua['SoPhieuBG'].'</td>
                     <td>'.$mua['NgayBG'].'</td>
                     <td>'.$mua['MaNCC'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?id='.$mua['id'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteBangBG('.$mua['id'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?sophieubaogia='.$mua['SoPhieuBG'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteBangBG('.$mua['SoPhieuBG'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>
@@ -195,18 +199,16 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                             </div>
                            
                         </div>
-                        
-                    </form>
+                    </div>
                     <form action="" method="get" class="timkiem" style="
     top: 52%;
     left: 58%;
-">
-                        
+">  
                         <div class="login-tenkho "><input type="text" name="timkiem2" placeholder="Ma Thuoc">
                             <button>Tim</button></div>
                         </form>
-                    <form class="manage-top manage-bottom" action="" method="post">
-                        <div class="manage-top_left" style="
+                    <div class="manage-top manage-bottom" >
+                        <form class="manage-top_left" action="" method="post" style="
     width: 45%;
 ">
                             
@@ -257,7 +259,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                        
                          
                          
-                    </div>
+                    </form>
                     <div class="manage-top_right" style="
     width: 45%;transform: translateY(36px);
 ">
@@ -284,8 +286,8 @@ if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
             echo '<tr>
                     <td>'.$mua['SoPhieuBG'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?id1='.$mua['id1'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocBG('.$mua['id1'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?sophieubaogia1='.$mua['SoPhieuBG'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocBG('.$mua['SoPhieuBG'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>      
@@ -295,7 +297,7 @@ if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
                         </div>
                        
                     </div>
-                    </form>
+                    </div>
                     <form action="" method="get" class="timkiem" style="
     top: 30px;
     left: 58%;

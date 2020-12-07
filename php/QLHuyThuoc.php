@@ -1,10 +1,9 @@
 
 <?php 
-    $sophieu = $id = $id1 = $ngay = $manv = $makho = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $sophieu2 = $mathuoc2 = $sophieu3 = "";
+    $sophieu = $ngay = $manv = $makho = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $sophieu2 = $mathuoc2 = $sophieu3 = $sophieu5 = $sophieu4 = "";
     require_once ('dbhelp.php');
-    $sophieu3 = $_GET['sophieu'];
-    $id = $_GET['id'];
-    $id1 = $_GET['id1'];
+    $sophieu4 = $_GET['sophieu'];
+    $sophieu5 = $_GET['sophieu1'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieu'])) {
             $sophieu = $_POST['sophieu'];
@@ -45,10 +44,10 @@
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
         $soluong = str_replace('\'','\\\'', $soluong);
 
-        if ($sophieu != '' &&  $sophieu == $sophieu3) {
+        if ($sophieu != '' &&  $sophieu == $sophieu4) {
             //update 
-            $sql = "UPDATE BienBanHuy SET SoPhieuBB = '$sophieu', NgayBB ='$ngay',  MaNV= '$manv', MaKho='$makho', WHERE id = " .$id;
-        }else {
+            $sql = "UPDATE BienBanHuy SET SoPhieuBB = '$sophieu', NgayBB ='$ngay',  MaNV= '$manv', MaKho='$makho' WHERE SoPhieuBB = " .$sophieu;
+        }else if ($sophieu != ''){
             //insert
             $sql = "INSERT INTO BienBanHuy(SoPhieuBB,NgayBB,MaNV,MaKho)
                 VALUES('$sophieu', '$ngay', '$manv','$makho')";
@@ -57,21 +56,23 @@
 
         //
         //
-        if ($id1 != '') {
+        if ($sophieu1 != '' && $sophieu1 == $sophieu5) {
             //update 
-            $sql1 = "UPDATE ThuocHuy SET SoPhieuHuy = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id1 = " .$id1;
-        }else {
+            //
+            $sql1 = "UPDATE ThuocHuy SET SoPhieuBB = '$sophieu1', MaThuoc ='$mathuoc',  SoLuongHuy= '$soluong' WHERE SoPhieuBB = " .$sophieu1;
+        }else if ($sophieu1 != ''){
             //insert
-            $sql1 = "INSERT INTO ThuocHuy(SoPhieuHuy,MaThuoc,SoLuong)
+            //
+            $sql1 = "INSERT INTO ThuocHuy(SoPhieuBB,MaThuoc,SoLuongHuy)
                 VALUES('$sophieu1', '$mathuoc', '$soluong')";
         }
         execute($sql1);
 }
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    if (isset($_GET['sophieu'])) {
+        $id = $_GET['sophieu'];
         
-        $sql = 'SELECT * FROM BienBanHuy WHERE id = '. $id;
+        $sql = 'SELECT * FROM BienBanHuy WHERE SoPhieuBB = '. $id;
         $nccList = executeResult($sql);
         if ($nccList != null && count($nccList) > 0) {
             $ncc = $nccList[0];
@@ -84,16 +85,16 @@
         }
     }
 
-    if (isset($_GET['id1'])) {
-        $id1 = $_GET['id1'];
+    if (isset($_GET['sophieu1'])) {
+        $id1 = $_GET['sophieu1'];
         
-        $sql = 'SELECT * FROM ThuocHuy WHERE id1 = '. $id1;
+        $sql = 'SELECT * FROM ThuocHuy WHERE SoPhieuBB = '. $id1;
         $ncc1List = executeResult($sql);
         if ($ncc1List != null && count($ncc1List) > 0) {
             $ncc = $ncc1List[0];
-            $sophieu3 = $ncc['SoPhieuHuy'];
+            $sophieu3 = $ncc['SoPhieuBB'];
             $mathuoc2 = $ncc['MaThuoc'];
-            $soluong2 = $ncc['SoLuong'];
+            $soluong2 = $ncc['SoLuongHuy'];
         } else {
 
         }
@@ -203,8 +204,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td width="20%">'.$mua['NgayBB'].'</td>
                     <td>'.$mua['MaNV'].'</td>
                     <td>'.$mua['MaKho'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?id='.$mua['id'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteBienBanHuy('.$mua['id'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?sophieu='.$mua['SoPhieuBB'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteBienBanHuy('.$mua['SoPhieuBB'].')">Delete</div></td>
                 </tr>';                          
     }
 ?> 
@@ -301,11 +302,11 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
 
     foreach ($datmuaList as $mua) {
             echo '<tr>
-                    <td>'.$mua['SoPhieuHuy'].'</td>
+                    <td>'.$mua['SoPhieuBB'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
-                    <td>'.$mua['SoLuong'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?id1='.$mua['id1'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocHuy('.$mua['id1'].')">Delete</div></td>
+                    <td>'.$mua['SoLuongHuy'].'</td>
+                    <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?sophieu1='.$mua['SoPhieuBB'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocHuy('.$mua['SoPhieuBB'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>   
