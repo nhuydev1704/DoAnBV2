@@ -91,5 +91,43 @@
 	}
 
 	///
+	//////
+	if (isset($_POST['phieuxuat'])) {
+		$id = $_POST['phieuxuat'];
+		$sql = 'DELETE FROM PhieuXuat WHERE id = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+
+	if (isset($_POST['thuocxuat'])) {
+		$id = $_POST['thuocxuat'];
+		$sql = 'DELETE FROM ThuocXuat WHERE id1 = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+	///
+	//////
+	if (isset($_POST['phieuhuy'])) {
+		$id = $_POST['phieuhuy'];
+		$sql = 'DELETE FROM BienBanHuy WHERE id = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+
+	if (isset($_POST['thuochuy'])) {
+		$id = $_POST['thuochuy'];
+		$sql = 'DELETE FROM ThuocHuy WHERE id1 = ' . $id;
+		execute($sql);
+		echo "Xoa thanh cong";
+
+	}
+
+	///
  ?>
 

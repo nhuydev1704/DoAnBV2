@@ -31,10 +31,10 @@
         $Khodt = executeResult($sql);
         if ($Khodt != null && count($Khodt) > 0) {
             $khoa = $Khodt[0];
-            $makhoa = $khoa['MaKhoa'];
-            $tenkhoa = $khoa['TenKhoa'];
+            $makhoa2 = $khoa['MaKhoa'];
+            $tenkhoa2 = $khoa['TenKhoa'];
         } else {
-            $makhoa = '';
+           
         }
     }
  ?>
@@ -52,14 +52,14 @@
 
 </head>
 <body>
-        <div id = "madalClick2" class="modal animate"> 
+        <div id = "" class="modal"> 
             <form id="out-form" class="grid grid__form" method="post" action="">
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title">Thông tin khoa</span>
                         <div class="login-form">
-                            <div class="login-makho"><span class = "label" >Mã khoa:</span><input type="text" name="makhoa" id="" value="<?=$makhoa?>"></div>
-                            <div class="login-tenkho"><span class = "label" >Tên khoa:</span><input type="text" name="tenkhoa" id="" value="<?=$tenkhoa?>">
+                            <div class="login-makho"><span class = "label" >Mã khoa:</span><input type="text" name="makhoa" id="" value="<?=$makhoa2?>"></div>
+                            <div class="login-tenkho"><span class = "label" >Tên khoa:</span><input type="text" name="tenkhoa" id="" value="<?=$tenkhoa2?>">
                             </div>
                         </div>
                     </div>

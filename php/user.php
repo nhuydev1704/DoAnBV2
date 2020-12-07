@@ -43,6 +43,8 @@
         if ($connect->query($sql) === TRUE) {
         	$message = "Dang ky thanh cong! Chao mung ban den voi He Thong Cua Nhu Y";
                 echo "<script type='text/javascript'>alert('$message');</script>";
+                echo "<center><a class='btn1 btn_a'href='javascript: history.go(-1)'>Trở lại đăng nhập</a></center>";
+
         } else {
         echo "Error: " . $sql . "<br>" . $connect->error;
         }
@@ -50,3 +52,24 @@
         $connect->close();
   		}}
  ?>
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>Document</title>
+ 	<link rel="stylesheet" href="../assets/css/main.css">
+ 	<link rel="stylesheet" href="../assets/css/base.css">
+ 	<style>
+ 		.btn_a {
+ 			display:  inline;
+ 			font-size: 5rem;
+ 			border:  1px solid;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	
+ </body>
+ </html>

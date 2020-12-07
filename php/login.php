@@ -10,7 +10,6 @@
             echo "</br>";
         } else {
             $email = $_POST['email'];
-            echo $user;
             echo "</br>";}
 
         if ($_POST['password1'] == NULL) {
@@ -20,7 +19,7 @@
             $password1 = $_POST['password1'];
             echo "</br>";
         }
-        if ($user == "" && $password1 == "") {
+        if ($email == "" && $password1 == "") {
             echo "Khong duoc de trong";
             echo "</br>";
 
@@ -45,14 +44,14 @@
           $email1;
           $password2;
           $a = 'tc';
-          $b;
+          $b = '';
         if ($a == 'tc') {
           while($row = mysqli_fetch_assoc($result)) {
                 $email1 = $row["email"];
                 $password2 = $row["password"];
             if ($email1 == $email && $password2 == $password1) {
                 if (!$loggedIn) {
-                    header("Location: http://localhost:9000/index1.php");
+                    header("Location: ../index1.php");
                     die();
             }
                 $b = 'a';
@@ -65,6 +64,7 @@
             
                 $message = "Sai mat khau hoac user";
                 echo "<script type='text/javascript'>alert('$message');</script>";
+                echo "<center><a class='btn1 btn_a'href='javascript: history.go(-1)'>Trở lại</a></center>";
         }
         } else {
           echo "saii";
@@ -73,3 +73,23 @@
     }
     }
  ?>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>Document</title>
+ 	<link rel="stylesheet" href="../assets/css/main.css">
+ 	<link rel="stylesheet" href="../assets/css/base.css">
+ 	<style>
+ 		.btn_a {
+ 			display:  inline;
+ 			font-size: 5rem;
+ 			border:  1px solid;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	
+ </body>
+ </html>

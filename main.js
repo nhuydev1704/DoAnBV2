@@ -133,5 +133,5 @@ function New10() {
 
 
 function New11() {
-    window.open("QLXuatThuoc.php", "_self")
+    window.open("QLHuyThuoc.php", "_self")
 }

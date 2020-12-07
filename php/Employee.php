@@ -36,18 +36,14 @@
     	$gioitinh = str_replace('\'','\\\'', $gioitinh);
     	$ngaysinh = str_replace('\'','\\\'', $ngaysinh);
     	$sodienthoai = str_replace('\'','\\\'', $sodienthoai);
-	echo $manv;
 
     	if ($manv != '' &&  $manv == $manv1) {
     		//update 
-    		echo $manv;
     		$sql = "UPDATE NhanVien SET MaNV = '$manv', TenNV ='$tennv',  DiaChi= '$diachi', GioiTinh='$gioitinh', NgaySinh='$ngaysinh', SoDT='$sodienthoai' WHERE MaNV = " .$manv;
-    		echo "b";
     	}else {
     		//insert
     		$sql = "INSERT INTO NhanVien(MaNV,TenNV,DiaChi,GioiTinh,NgaySinh,SoDT)
     			VALUES('$manv', '$tennv', '$diachi', '$gioitinh', '$ngaysinh', '$sodienthoai')";
-    			echo "a";
     	}
     	execute($sql);
 }

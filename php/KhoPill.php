@@ -50,7 +50,7 @@
     <script src="../assets/js/jquery.js"></script>
 </head>
 <body>
-    <div id = "madalClick" class="modal animate"> 
+    <div id = "madalClick" class="modal"> 
             <form id="out-form" class="grid grid__form" method="post" action="">
                 <div class="form-login">
                     <div class="login">

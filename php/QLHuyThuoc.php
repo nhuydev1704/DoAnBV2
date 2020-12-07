@@ -40,7 +40,6 @@
         $sophieu = str_replace('\'','\\\'', $sophieu);
         $ngay = str_replace('\'','\\\'', $ngay);
         $manv = str_replace('\'','\\\'', $manv);
-        $mancc = str_replace('\'','\\\'', $mancc);
 
         $sophieu1 = str_replace('\'','\\\'', $sophieu1);
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
@@ -60,10 +59,10 @@
         //
         if ($id1 != '') {
             //update 
-            $sql1 = "UPDATE ThuocHuy SET SoPhieuBB = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id1 = " .$id1;
+            $sql1 = "UPDATE ThuocHuy SET SoPhieuHuy = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id1 = " .$id1;
         }else {
             //insert
-            $sql1 = "INSERT INTO ThuocHuy(SoPhieuBB,MaThuoc,SoLuong)
+            $sql1 = "INSERT INTO ThuocHuy(SoPhieuHuy,MaThuoc,SoLuong)
                 VALUES('$sophieu1', '$mathuoc', '$soluong')";
         }
         execute($sql1);
@@ -92,7 +91,7 @@
         $ncc1List = executeResult($sql);
         if ($ncc1List != null && count($ncc1List) > 0) {
             $ncc = $ncc1List[0];
-            $sophieu3 = $ncc['SoPhieuBB'];
+            $sophieu3 = $ncc['SoPhieuHuy'];
             $mathuoc2 = $ncc['MaThuoc'];
             $soluong2 = $ncc['SoLuong'];
         } else {
@@ -129,7 +128,7 @@
                                 
                                     <div class="manage-top_left-form">
                                         <div class="login-form login-form5" >
-                                            <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu BB:</span><input type="text" name="sophieu" id="">
+                                            <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu BB:</span><input type="text" name="sophieu" id="" value="<?=$sophieu2?>">
                                             </div>
                                             <div class="login-tenkho login-ncc"><span class = "label label5" >Ngày BB:</span>
                                                 <input type="date" id="start" name="ngay"
@@ -189,7 +188,26 @@
                                              </tr>
                                         </thead>
                                         <tbody>
-                                            
+<?php 
+if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
+    $sql = 'SELECT * FROM BienBanHuy WHERE MaNV LIKE "%'.$_GET['timkiem'].'%"';
+    }else {
+
+    $sql = 'SELECT * FROM BienBanHuy';
+}
+    $datmuaList = executeResult($sql);
+
+    foreach ($datmuaList as $mua) {
+            echo '<tr>
+                    <td>'.$mua['SoPhieuBB'].'</td>
+                    <td width="20%">'.$mua['NgayBB'].'</td>
+                    <td>'.$mua['MaNV'].'</td>
+                    <td>'.$mua['MaKho'].'</td>
+                    <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?id='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteBienBanHuy('.$mua['id'].')">Delete</div></td>
+                </tr>';                          
+    }
+?> 
                                         </tbody>
                                         
                                         
@@ -207,7 +225,7 @@
                         </form>
                         </div>
                         <div class="manage-top manage-bottom">
-                            <div class="manage-top_left manage-top_left9" style="
+                            <form class="manage-top_left manage-top_left9" method="post" action="" style="
     width: 45%;
 ">
                                 
@@ -245,7 +263,7 @@
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="login-makho login-ncc"><span class = "label label5" >Số lượng:</span><input type="text" name="mancc" id="">
+                                        <div class="login-makho login-ncc"><span class = "label label5" >Số lượng:</span><input type="text" name="soluong" id="" value="<?=$soluong2?>">
                                         </div>
                                     </div>
                                 </div>
@@ -258,7 +276,7 @@
                                             <li class="form-item5" onclick="out()">Thoat</li>
                                     </ul>
                                 </div>    
-                        </div>
+                        </form>
                         <div class="manage-top_right" style="
     width: 45%;transform: translateY(36px);
 ">
@@ -272,7 +290,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+<?php 
+if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
+    $sql = 'SELECT * FROM ThuocHuy WHERE MaThuoc LIKE "%'.$_GET['timkiem1'].'%"';
+    }else {
+
+    $sql = 'SELECT * FROM ThuocHuy';
+}
+    $datmuaList = executeResult($sql);
+
+    foreach ($datmuaList as $mua) {
+            echo '<tr>
+                    <td>'.$mua['SoPhieuHuy'].'</td>
+                    <td>'.$mua['MaThuoc'].'</td>
+                    <td>'.$mua['SoLuong'].'</td>
+                    <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?id1='.$mua['id1'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocHuy('.$mua['id1'].')">Delete</div></td>
+                </tr>';                          
+    }
+?>   
                                     </tbody>
                                     
                                   </table>
@@ -299,7 +335,7 @@
                 return;
             }
             $.post('delete.php', {
-                        'phieuxuat': id
+                        'phieuhuy': id
              }, function(data) {
                 alert('da xoa thanh cong');
                 location.reload();
@@ -312,7 +348,7 @@
                 return;
             }
             $.post('delete.php', {
-                        'thuocxuat': id
+                        'thuochuy': id
              }, function(data) {
                 alert('da xoa thanh cong');
                 location.reload();

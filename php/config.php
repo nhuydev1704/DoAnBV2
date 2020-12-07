@@ -1,6 +1,6 @@
 <?php 
 	define('HOST', 'localhost');
-	define('DATABASE', 'Hospital');
+	define('DATABASE', 'BenhVien');
 	define('USERNAME', 'root');
 	define('PASSWORD', '');
  ?>
