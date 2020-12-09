@@ -99,23 +99,8 @@
 
         }
     }
+    require_once('html.php')
  ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ thống quản lý quầy thuốc bệnh viện</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-5.14.0-web/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/base.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <script src="../assets/js/jquery.js"></script>
-</head>
-<body>
-
-
-
 
 <div id = "madalClick9" class="modal"> 
                <div id="out-form" class="grid grid__form">
@@ -194,7 +179,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
     $sql = 'SELECT * FROM BienBanHuy WHERE MaNV LIKE "%'.$_GET['timkiem'].'%"';
     }else {
 
-    $sql = 'SELECT * FROM BienBanHuy';
+    $sql = 'SELECT * FROM BienBanHuy,NhanVien WHERE BienBanHuy.MaNV = NhanVien.MaNV';
 }
     $datmuaList = executeResult($sql);
 
@@ -204,6 +189,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td width="20%">'.$mua['NgayBB'].'</td>
                     <td>'.$mua['MaNV'].'</td>
                     <td>'.$mua['MaKho'].'</td>
+                    <td>'.$mua['TenNV'].'</td>
+
                     <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?sophieu='.$mua['SoPhieuBB'].'","_self")\'>Edit</div></td>
                     <td><div class="btn11" onclick="deleteBienBanHuy('.$mua['SoPhieuBB'].')">Delete</div></td>
                 </tr>';                          

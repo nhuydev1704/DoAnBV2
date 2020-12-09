@@ -34,7 +34,7 @@
                 <span> Bệnh </span>
                 <span> Viện </span>
         </div>
-        <div class="nhom8">NGUYỄN NHƯ Ý</div>
+        <!-- <div class="nhom8">NGUYỄN NHƯ Ý</div> -->
 
         <div class="grid">
             <div class="picture">
