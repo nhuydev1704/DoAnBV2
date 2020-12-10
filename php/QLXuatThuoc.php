@@ -1,3 +1,4 @@
+
 <?php 
     $sophieu = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $ncc2 = $sophieu2 = $mathuoc2 = $sophieu3 = $sophieu4 = "";
     require_once ('dbhelp.php');
@@ -205,7 +206,7 @@
                              
                         </form>
                         <div class="manage-top_right" style="
-    width: 45%;
+
 ">
                             <div class="value">
                                 <table class="table5">
@@ -312,8 +313,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                          
                          
                     </form>
-                    <div class="manage-top_right" style="
-    width: 45%;transform: translateY(36px);
+                    <div class="manage-top_right" style="transform: translateY(36px);
 ">
                         <div class="value">
                             <table class="table5">

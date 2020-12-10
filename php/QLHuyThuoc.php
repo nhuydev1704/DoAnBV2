@@ -161,7 +161,7 @@
                                     </div>  
                             </form>
                             <div class="manage-top_right" style="
-    width: 45%;
+    
 ">
                                 <div class="value">
                                     <table class="table5">
@@ -171,6 +171,10 @@
                                               <th>Ngày BB</th> 
                                               <th>Mã nhân viên</th>
                                               <th>Mã kho</th>
+                                              <th>Tên nhân viên</th> 
+                                              <th width="16%">Tên kho</th> 
+                                              <th></th>
+                                              <th></th>
                                              </tr>
                                         </thead>
                                         <tbody>
@@ -179,7 +183,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
     $sql = 'SELECT * FROM BienBanHuy WHERE MaNV LIKE "%'.$_GET['timkiem'].'%"';
     }else {
 
-    $sql = 'SELECT * FROM BienBanHuy,NhanVien WHERE BienBanHuy.MaNV = NhanVien.MaNV';
+    $sql = 'SELECT * FROM BienBanHuy,NhanVien,KhoThuoc WHERE BienBanHuy.MaNV = NhanVien.MaNV and KhoThuoc.MaKho = BienBanHuy.MaKho';
 }
     $datmuaList = executeResult($sql);
 
@@ -190,7 +194,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$mua['MaNV'].'</td>
                     <td>'.$mua['MaKho'].'</td>
                     <td>'.$mua['TenNV'].'</td>
-
+                    <td>'.$mua['TenKho'].'</td>
                     <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?sophieu='.$mua['SoPhieuBB'].'","_self")\'>Edit</div></td>
                     <td><div class="btn11" onclick="deleteBienBanHuy('.$mua['SoPhieuBB'].')">Delete</div></td>
                 </tr>';                          
@@ -265,8 +269,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                                     </ul>
                                 </div>    
                         </form>
-                        <div class="manage-top_right" style="
-    width: 45%;transform: translateY(36px);
+                        <div class="manage-top_right" style="transform: translateY(36px);
 ">
                             <div class="value">
                                 <table class="table5">
@@ -274,7 +277,9 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                                         <tr>
                                               <th>Số phiếu BB</th>
                                               <th>Mã thuốc</th> 
-                                              <th>Số lượng</th>    
+                                              <th>Số lượng</th> 
+                                              <th></th>
+                                              <th></th>   
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -283,7 +288,7 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
     $sql = 'SELECT * FROM ThuocHuy WHERE MaThuoc LIKE "%'.$_GET['timkiem1'].'%"';
     }else {
 
-    $sql = 'SELECT * FROM ThuocHuy';
+    $sql = 'SELECT * FROM ThuocHuy,Thuoc Where Thuoc.MaThuoc = ThuocHuy.MaThuoc';
 }
     $datmuaList = executeResult($sql);
 
@@ -292,6 +297,7 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
                     <td>'.$mua['SoPhieuBB'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
                     <td>'.$mua['SoLuongHuy'].'</td>
+                    <td>'.$mua['TenThuoc'].'</td>
                     <td><div class="btn11" onclick=\'window.open("QLHuyThuoc.php?sophieu1='.$mua['SoPhieuBB'].'","_self")\'>Edit</div></td>
                     <td><div class="btn11" onclick="deleteThuocHuy('.$mua['SoPhieuBB'].')">Delete</div></td>
                 </tr>';                          

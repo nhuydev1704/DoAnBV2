@@ -205,9 +205,7 @@
                              
                              
                         </form>
-                        <div class="manage-top_right" style="
-    width: 45%;
-">
+                        <div class="manage-top_right" style="">
                             <div class="value">
                                 <table class="table5">
                                     <thead>
@@ -313,8 +311,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                          
                          
                     </form>
-                    <div class="manage-top_right" style="
-    width: 45%;transform: translateY(36px);
+                    <div class="manage-top_right" style="transform: translateY(36px);
 ">
                         <div class="value">
                             <table class="table5">
