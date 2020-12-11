@@ -26,10 +26,10 @@
 	        }if($password1 !== $password2) {
 	        	echo "Password nhap lai khong trung khop!";
 	        } else {
-        $username = "root"; // Khai báo username
-        $password = "";      // Khai báo password
-        $server   = "localhost";   // Khai báo server
-        $dbname   = "users";      // Khai báo database
+        $username = "doanbenh_root"; // Khai báo username
+        $password = "Nguyennhuy1704";      // Khai báo password
+        $server   = "http";   // Khai báo server
+        $dbname   = "doanbenh_BenhVien1";      // Khai báo database
         // Kết nối database
         $connect = new mysqli($server, $username, $password, $dbname);
         //Nếu kết nối bị lỗi thì xuất báo lỗi và thoát.

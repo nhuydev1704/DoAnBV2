@@ -1,5 +1,5 @@
 -- tao csdl
--- CREATE DATABASE BenhVien;
+CREATE DATABASE BenhVien;
 -- su dung 
 USE BenhVien;
 
