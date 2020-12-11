@@ -26,8 +26,8 @@
 	        }if($password1 !== $password2) {
 	        	echo "Password nhap lai khong trung khop!";
 	        } else {
-        $username = "doanbenh"; // Khai báo username
-        $password = "Nguyennhuy1704";      // Khai báo password
+        $username = "doanbenh_root"; // Khai báo username
+        $password = "khanhandli";      // Khai báo password
         $server   = "localhost";   // Khai báo server
         $dbname   = "doanbenh_BenhVien1";      // Khai báo database
         // Kết nối database
