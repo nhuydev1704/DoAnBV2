@@ -25,10 +25,10 @@
 
         } else {
 
-        $username = "doanbenh_root"; // Khai báo username
-        $password = "khanhandli";      // Khai báo password
+        $username = "root"; // Khai báo username
+        $password = "";      // Khai báo password
         $server   = "localhost";   // Khai báo server
-        $dbname   = "doanbenh_BenhVien1";      // Khai báo database
+        $dbname   = "users";      // Khai báo database
         // Kết nối database
         $connect = new mysqli($server, $username, $password, $dbname);
         //Nếu kết nối bị lỗi thì xuất báo lỗi và thoát.
