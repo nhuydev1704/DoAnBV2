@@ -18,7 +18,7 @@
 
     <!-- TODO Block ELEMENT MODIFIER -->
     <div class="app">
-        <div class="div1" style="color: white;">
+        <!-- <div class="div1" style="color: white;">
                 <span><img class="div1-img" src="./assets/img/logo.png" alt=""></span>
                 
                 <span> Phân </span>
@@ -33,7 +33,7 @@
                 <span> Thuốc </span>
                 <span> Bệnh </span>
                 <span> Viện </span>
-        </div>
+        </div> -->
         <!-- <div class="nhom8">NGUYỄN NHƯ Ý</div> -->
 
         <div class="grid">
