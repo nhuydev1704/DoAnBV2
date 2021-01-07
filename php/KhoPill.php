@@ -1,7 +1,6 @@
 <?php 
-    $makho = $tenkho = $makho2 = $tenkho2 = $makho1 = "";
+    $id1 = $id2 = $makho = $tenkho = $makho2 = $tenkho2 = $makho1 = "";
     require_once ('dbhelp.php');
-    $makho1 = $_GET['makho'];
     if (!empty($_POST)) {
         if (isset($_POST['makho'])) {
             $makho = $_POST['makho'];
@@ -10,23 +9,34 @@
         if (isset($_POST['tenkho'])) {
             $tenkho = $_POST['tenkho'];
         }
+         if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
         $makho = str_replace('\'','\\\'', $makho);
         $tenkho = str_replace('\'','\\\'', $tenkho);
 
-        if ($makho != '' &&  $makho == $makho1) {
+        if ($id1 != '') {
             //update 
-            $sql = "UPDATE KhoThuoc SET MaKho = '$makho', TenKho ='$tenkho'WHERE MaKho = " .$makho;
+            $sql = "UPDATE KhoThuoc SET MaKho = '$makho', TenKho ='$tenkho'WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if($makho != '') {
             //insert
             $sql = "INSERT INTO KhoThuoc(MaKho,TenKho)
                 VALUES('$makho', '$tenkho')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
         }
         execute($sql);
 }
-    if (isset($_GET['makho'])) {
-        $makho = $_GET['makho'];
+$id3 = '';
+    if (isset($_GET['id1'])) {
+        $id3 = $_GET['id1'];
         
-        $sql = 'SELECT * FROM KhoThuoc WHERE MaKho = '. $makho;
+        $sql = 'SELECT * FROM KhoThuoc WHERE MaKho = '. $id3;
         $KhoPill = executeResult($sql);
         if ($KhoPill != null && count($KhoPill) > 0) {
             $pill = $KhoPill[0];
@@ -39,7 +49,9 @@
     require_once('html.php');
  ?>
     <div id = "madalClick" class="modal"> 
-            <form id="out-form" class="grid grid__form" method="post" action="">
+            <form id="out-form" class="grid1 grid__form" method="post" action="">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
+
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title">Thông tin kho thuốc</span>
@@ -55,6 +67,8 @@
                             <tr >
                                 <th>Ma kho</th>
                                 <th>Ten Kho</th>
+                                <th></th>
+                                <th></th>
                               </tr>
                            </thead>
                            <tbody  id="table">
@@ -74,8 +88,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$pill['MaKho'].'</td>
                     <td>'.$pill['TenKho'].'</td>
                 
-                    <td><div class="btn11" onclick=\'window.open("KhoPill.php?makho='.$pill['MaKho'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteKhoPill('.$pill['MaKho'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("KhoPill.php?id1='.$pill['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteKhoPill('.$pill['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>

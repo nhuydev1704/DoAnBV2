@@ -1,7 +1,6 @@
 <?php 
-    $makhoa = $tenkhoa = $makhoa2 = $tenkhoa2 = $makhoa1 = "";
+    $id1 = $id2 = $makhoa = $tenkhoa = $makhoa2 = $tenkhoa2 = $makhoa1 = "";
     require_once ('dbhelp.php');
-    $makhoa1 = $_GET['makhoa'];
     if (!empty($_POST)) {
         if (isset($_POST['makhoa'])) {
             $makhoa = $_POST['makhoa'];
@@ -11,23 +10,34 @@
             $tenkhoa = $_POST['tenkhoa'];
 
         }
+         if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
         $makhoa = str_replace('\'','\\\'', $makhoa);
         $tenkhoa = str_replace('\'','\\\'', $tenkhoa);
 
-        if ($makhoa != '' &&  $makhoa == $makhoa1) {
+        if ($id1 != '') {
             //update 
-            $sql = "UPDATE KhoaDT SET MaKhoa = '$makhoa', TenKhoa ='$tenkhoa'WHERE MaKhoa = " .$makhoa;
+            $sql = "UPDATE KhoaDT SET MaKhoa = '$makhoa', TenKhoa ='$tenkhoa'WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if ($makhoa != ''){
             //insert
             $sql = "INSERT INTO KhoaDT(MaKhoa,TenKhoa)
                 VALUES('$makhoa', '$tenkhoa')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
         }
         execute($sql);
 }
-    if (isset($_GET['makhoa'])) {
-        $makhoa = $_GET['makhoa'];
+$id3 = '';
+    if (isset($_GET['id1'])) {
+        $id3 = $_GET['id1'];
         
-        $sql = 'SELECT * FROM KhoaDT WHERE MaKhoa = '. $makhoa;
+        $sql = 'SELECT * FROM KhoaDT WHERE id = '. $id3;
         $Khodt = executeResult($sql);
         if ($Khodt != null && count($Khodt) > 0) {
             $khoa = $Khodt[0];
@@ -40,12 +50,14 @@
     require_once('html.php');
  ?>
         <div id = "" class="modal"> 
-            <form id="out-form" class="grid grid__form" method="post" action="">
+            <form id="out-form" class="grid1 grid__form" method="post" action="">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
+
                 <div class="form-login">
                     <div class="login">
                         <span class="login-title">Thông tin khoa</span>
                         <div class="login-form">
-                            <div class="login-makho"><span class = "label" >Mã khoa:</span><input type="text" name="makhoa" id="" value="<?=$makhoa2?>"></div>
+                            <div class="login-makho" style="margin-bottom: 4px;"><span class = "label" >Mã khoa:</span><input type="text" name="makhoa" id="" value="<?=$makhoa2?>"></div>
                             <div class="login-tenkho"><span class = "label" >Tên khoa:</span><input type="text" name="tenkhoa" id="" value="<?=$tenkhoa2?>">
                             </div>
                         </div>
@@ -76,8 +88,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
             echo '<tr>
                     <td>'.$khoadt['MaKhoa'].'</td>
                     <td>'.$khoadt['TenKhoa'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("KhoaDT.php?makhoa='.$khoadt['MaKhoa'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteKhoaDT('.$khoadt['MaKhoa'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("KhoaDT.php?id1='.$khoadt['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteKhoaDT('.$khoadt['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>

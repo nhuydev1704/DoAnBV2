@@ -1,8 +1,6 @@
 <?php 
-    $sophieumua  = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = $sophieumuathuoc1 ="";
+    $id1 = $sophieumua  = $ngaymua = $manv = $ncc = $sophieumuathuoc = $mathuoc = $soluong = $sophieumua2 = $id2 = $ngaymua2 = $manv2 = $ncc2 = $sophieumuathuoc2 = $mathuoc2 = $soluong2 = $sophieumua1 = $sophieumuathuoc1 ="";
     require_once ('dbhelp.php');
-    $sophieumua1 = $_GET['sophieumua'];
-    $sophieumuathuoc1 = $_GET['sophieumuathuoc'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieumua'])) {
             $sophieumua = $_POST['sophieumua'];
@@ -34,6 +32,12 @@
             $soluong = $_POST['soluong'];
 
         }
+        if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
         $sophieumua = str_replace('\'','\\\'', $sophieumua);
         $ngaymua = str_replace('\'','\\\'', $ngaymua);
         $manv = str_replace('\'','\\\'', $manv);
@@ -43,32 +47,40 @@
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
         $soluong = str_replace('\'','\\\'', $soluong);
 
-        if ($sophieumua != '' &&  $sophieumua == $sophieumua1) {
+        if ($id1 != '') {
             //update 
-            $sql = "UPDATE PhieuDatMua SET SoPhieuMua = '$sophieumua', NgayMua ='$ngaymua',  MaNV= '$manv', MaNCC='$ncc' WHERE SoPhieuMua = " .$sophieumua;
+            $sql = "UPDATE PhieuDatMua SET SoPhieuMua = '$sophieumua', NgayMua ='$ngaymua',  MaNV= '$manv', MaNCC='$ncc' WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if ($sophieumua != ''){
             //insert
             $sql = "INSERT INTO PhieuDatMua(SoPhieuMua,NgayMua,MaNV,MaNCC)
                 VALUES('$sophieumua', '$ngaymua', '$manv','$ncc')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
         }
         execute($sql);
 
         //
         //
-        if ($sophieumuathuoc != '' &&  $sophieumuathuoc == $sophieumuathuoc1) {
+        if ($id2 != '') {
             //update 
-            $sql1 = "UPDATE ThuocDatMua SET SoPhieuMua = '$sophieumuathuoc', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE  SoPhieuMua= " .$sophieumuathuoc;
+            $sql1 = "UPDATE ThuocDatMua SET SoPhieuMua = '$sophieumuathuoc', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE  id = " .$id2;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if($sophieumuathuoc != '') {
             //insert
             $sql1 = "INSERT INTO ThuocDatMua(SoPhieuMua,MaThuoc,SoLuong)
                 VALUES('$sophieumuathuoc', '$mathuoc', '$soluong')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
         }
         execute($sql1);
 }
-
-    if (isset($_GET['sophieumua'])) {
-        $id = $_GET['sophieumua'];
-        $sql = 'SELECT * FROM PhieuDatMua WHERE SoPhieuMua = '. $id;
+$id3 = '';
+    if (isset($_GET['id1'])) {
+        $id3 = $_GET['id1'];
+        $sql = 'SELECT * FROM PhieuDatMua WHERE id = '. $id3;
         $nccList = executeResult($sql);
         if ($nccList != null && count($nccList) > 0) {
             $ncc = $nccList[0];
@@ -80,11 +92,11 @@
 
         }
     }
-
-    if (isset($_GET['sophieumuathuoc'])) {
-        $id2 = $_GET['sophieumuathuoc'];
+$id4 = '';
+    if (isset($_GET['id2'])) {
+        $id4 = $_GET['id2'];
         
-        $sql = 'SELECT * FROM ThuocDatMua WHERE SoPhieuMua = '. $id2;
+        $sql = 'SELECT * FROM ThuocDatMua WHERE id = '. $id4;
         $nccList1 = executeResult($sql);
         if ($nccList1 != null && count($nccList1) > 0) {
             $ncc = $nccList1[0];
@@ -99,12 +111,13 @@
     
  ?>
    <div id = "" class="modal"> 
-            <div id="out-form" class="grid grid__form">
+            <div id="out-form" class="grid1 grid__form">
                 <span class="login-title login-title3 login-title5">Thông tin phiếu đặt mua</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc đặt mua</span>
                 <div class="manage" style="width: 90%;">
                     <div class="manage-top" style="padding: 14px 0 40px 0; ">
                         <form action="" method="post" style="width: 60%;">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
                             <div class="manage-top_left" style="width: 90%;">
                                 <div class="manage-top_left-form">
                                     <div class="login-form login-form5" >
@@ -168,6 +181,8 @@
                                               <th>Ngày mua</th> 
                                               <th width="12%">Mã nhân viên</th>
                                               <th width="15%">Mã nhà cung cấp</th>  
+                                              <th></th>
+                                              <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -186,8 +201,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$mua['NgayMua'].'</td>
                     <td>'.$mua['MaNV'].'</td>
                     <td>'.$mua['MaNCC'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?sophieumua='.$mua['SoPhieuMua'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteDatMua('.$mua['SoPhieuMua'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?id1='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteDatMua('.$mua['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>
@@ -209,6 +224,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     </div>
                     <div class="manage-top manage-bottom">
                        <form action="" method="post" style="width: 60%;">
+                            <input type="number" name="id" value="<?=$id4?>" hidden>
+
                             <div class="manage-top_left" style="width: 90%;">
                             
                             <div class="manage-top_left-form">
@@ -266,7 +283,9 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                                     <tr>
                                           <th>Số phiếu mua</th>
                                           <th>Mã thuốc</th> 
-                                          <th>Số lượng</th>  
+                                          <th>Số lượng</th> 
+                                          <th></th>
+                                           <th></th> 
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -284,8 +303,8 @@ if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
                     <td>'.$mua1['SoPhieuMua'].'</td>
                     <td>'.$mua1['MaThuoc'].'</td>
                     <td>'.$mua1['SoLuong'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?sophieumuathuoc='.$mua1['SoPhieuMua'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocDatMua('.$mua1['SoPhieuMua'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLDatMua.php?id2='.$mua1['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocDatMua('.$mua1['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>

@@ -1,8 +1,6 @@
 <?php 
-    $sophieubaogia = $ngaybaogia = $mancc = $sophieubaogia1 = $mathuoc = $id = $id1 = $sophieubaogia2 = $ngaybaogia2 = $mancc2 = $sophieubaogia3 =$sophieubaogia4=$sophieubaogia5= $mathuoc2 ="";
+    $sophieubaogia = $ngaybaogia = $mancc = $sophieubaogia1 = $mathuoc = $id1 = $id2 = $sophieubaogia2 = $ngaybaogia2 = $mancc2 = $sophieubaogia3 =$sophieubaogia4=$sophieubaogia5= $mathuoc2 ="";
     require_once ('dbhelp.php');
-    $sophieubaogia4 = $_GET['sophieubaogia'];
-    $sophieubaogia5 = $_GET['sophieubaogia1'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieubaogia'])) {
             $sophieubaogia = $_POST['sophieubaogia'];
@@ -26,38 +24,42 @@
             $mathuoc = $_POST['mathuoc'];
 
         }
-        // if (isset($_POST['id'])) {
-        //     $id = $_POST['id'];
-
-        // }
-        // if (isset($_POST['id1'])) {
-        //     $id1 = $_POST['id1'];
-
-        // }
+        if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
         $sophieubaogia = str_replace('\'','\\\'', $sophieubaogia);
         $ngaybaogia = str_replace('\'','\\\'', $ngaybaogia);
         $mancc = str_replace('\'','\\\'', $mancc);
         $sophieubaogia1 = str_replace('\'','\\\'', $sophieubaogia1);
 
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
-        if ($sophieubaogia != '' && $sophieubaogia == $sophieubaogia4) {
+        if ($id1 != '') {
             //update 
             
-            $sql = "UPDATE BangBaoGia SET SoPhieuBG = '$sophieubaogia', MaNCC= '$mancc',NgayBG ='$ngaybaogia' WHERE SoPhieuBG = " .$sophieubaogia;
+            $sql = "UPDATE BangBaoGia SET SoPhieuBG = '$sophieubaogia', MaNCC= '$mancc',NgayBG ='$ngaybaogia' WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if ($sophieubaogia != ''){
             //insert
             
             $sql = "INSERT INTO BangBaoGia(SoPhieuBG,MaNCC,NgayBG)
                 VALUES('$sophieubaogia', '$mancc', '$ngaybaogia')";
+                echo "<script > alert('Them thành công!')</script>";
+
         }
         execute($sql);
 
         //
         //
-        if ($sophieubaogia1 != '' && $sophieubaogia1 == $sophieubaogia5) {
+        if ($id2 != '') {
                 // echo "<script type='text/javascript'>alert('update');</script>";
             //update 
-            $sql1 = "UPDATE ThuocBaoGia SET SoPhieuBG = '$sophieubaogia1', MaThuoc ='$mathuoc' WHERE SoPhieuBG = " .$sophieubaogia1;
+            $sql1 = "UPDATE ThuocBaoGia SET SoPhieuBG = '$sophieubaogia1', MaThuoc ='$mathuoc' WHERE id = " .$id2;
+                echo "<script > alert('Sửa thành công!')</script>";
+
 
         }else if($sophieubaogia1 != ''){
             //insert
@@ -65,14 +67,16 @@
             //
             $sql1 = "INSERT INTO ThuocBaoGia(SoPhieuBG,MaThuoc)
                 VALUES('$sophieubaogia1', '$mathuoc')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
         }
         execute($sql1);
 }
-
-    if (isset($_GET['sophieubaogia'])) {
-        $id = $_GET['sophieubaogia'];
+$id3 = '';
+    if (isset($_GET['id1'])) {
+        $id3 = $_GET['id1'];
         
-        $sql = 'SELECT * FROM BangBaoGia WHERE SoPhieuBG = '. $id;
+        $sql = 'SELECT * FROM BangBaoGia WHERE id = '. $id3;
         $baogiaList = executeResult($sql);
         if ($baogiaList != null && count($baogiaList) > 0) {
             $ncc = $baogiaList[0];
@@ -83,11 +87,11 @@
 
         }
     }
-
-    if (isset($_GET['sophieubaogia1'])) {
-        $id1 = $_GET['sophieubaogia1'];
+$id4 = '';
+    if (isset($_GET['id2'])) {
+        $id4 = $_GET['id2'];
         
-        $sql = 'SELECT * FROM ThuocBaoGia WHERE SoPhieuBG = '. $id1;
+        $sql = 'SELECT * FROM ThuocBaoGia WHERE SoPhieuBG = '. $id4;
         $baogiaList1 = executeResult($sql);
         if ($baogiaList1 != null && count($baogiaList1) > 0) {
             $ncc1 = $baogiaList1[0];
@@ -100,7 +104,7 @@
     require_once('html.php');
  ?>
    <div id = "madalClick6" class="modal"> 
-            <div id="out-form" class="grid grid__form" >
+            <div id="out-form" class="grid1 grid__form" >
                 <span class="login-title login-title3 login-title5">Thông tin bảng báo giá</span>
                 <span class="login-title login-title3 login-title55">Thông tin thuốc báo giá</span>
                 <div class="manage" style="
@@ -110,6 +114,7 @@
                         <form class="manage-top_left" method="post" action="" style="
     width: 45%;
 ">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
                             
                                 <div class="manage-top_left-form">
                                     <div class="login-form login-form5" style="transform: translateY(-19px);">
@@ -158,6 +163,8 @@
                                               <th>Số phiếu báo giá</th>
                                               <th>Ngày báo giá</th> 
                                               <th>Mã nhà cung cấp</th>
+                                              <th></th>
+                                              <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -175,8 +182,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$mua['SoPhieuBG'].'</td>
                     <td>'.$mua['NgayBG'].'</td>
                     <td>'.$mua['MaNCC'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?sophieubaogia='.$mua['SoPhieuBG'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteBangBG('.$mua['SoPhieuBG'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?id1='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteBangBG('.$mua['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>
@@ -197,6 +204,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                         <form class="manage-top_left" action="" method="post" style="
     width: 45%;
 ">
+                            <input type="number" name="id" value="<?=$id4?>" hidden>
                             
                             <div class="manage-top_left-form">
                                 <div class="login-form login-form5" >
@@ -254,7 +262,9 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                                 <thead>
                                         <tr>
                                           <th>Số phiếu báo giá</th>
-                                          <th>Mã thuốc</th>    
+                                          <th>Mã thuốc</th>   
+                                          <th></th>
+                                           <th></th> 
                                         </tr>
                                 </thead>
                                 <tbody>
@@ -271,8 +281,8 @@ if (isset($_GET['timkiem2']) && $_GET['timkiem2'] != '') {
             echo '<tr>
                     <td>'.$mua['SoPhieuBG'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?sophieubaogia1='.$mua['SoPhieuBG'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocBG('.$mua['SoPhieuBG'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLBaoGia.php?id2='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocBG('.$mua['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>      

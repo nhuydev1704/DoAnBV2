@@ -1,9 +1,7 @@
 
 <?php 
-    $sophieu = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $ncc2 = $sophieu2 = $mathuoc2 = $sophieu3 = $sophieu4 = "";
+    $id1 = $sophieu = $ngay = $manv = $makho = $makhoa = $mancc = $sophieu1 = $mathuoc = $id2 = $soluong =$soluong2 = $ngay2 = $manv2 = $makho2 = $makhoa2 = $ncc2 = $sophieu2 = $mathuoc2 = $sophieu3 = $sophieu4 = "";
     require_once ('dbhelp.php');
-    $sophieu3 = $_GET['sophieuxuat1'];
-    $sophieu4 = $_GET['sophieuxuat2'];
     if (!empty($_POST)) {
         if (isset($_POST['sophieu'])) {
             $sophieu = $_POST['sophieu'];
@@ -42,7 +40,12 @@
         }
         if (isset($_POST['soluong'])) {
             $soluong = $_POST['soluong'];
-
+        }
+        if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
         }
         $sophieu = str_replace('\'','\\\'', $sophieu);
         $ngay = str_replace('\'','\\\'', $ngay);
@@ -53,38 +56,44 @@
         $mathuoc = str_replace('\'','\\\'', $mathuoc);
         $soluong = str_replace('\'','\\\'', $soluong);
 
-        if ($sophieu != '' &&  $sophieu == $sophieu3) {
+        if ($id1 != '') {
             //update 
-            $sql = "UPDATE PhieuXuat SET SoPhieuXuat = '$sophieu', NgayNhap ='$ngay',  MaNV= '$manv', MaKho='$makho', MaKhoa='$makhoa', MaNCC='$mancc' WHERE SoPhieuXuat = " .$sophieu;
+            $sql = "UPDATE PhieuXuat SET SoPhieuXuat = '$sophieu', NgayXuat ='$ngay',  MaNV= '$manv', MaKho='$makho', MaKhoa='$makhoa', MaNCC='$mancc' WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if ($sophieu != ''){
             //insert
-            $sql = "INSERT INTO PhieuXuat(SoPhieuXuat,NgayNhap,MaNV,MaKho,MaKhoa,MaNCC)
+            $sql = "INSERT INTO PhieuXuat(SoPhieuXuat,NgayXuat,MaNV,MaKho,MaKhoa,MaNCC)
                 VALUES('$sophieu', '$ngay', '$manv','$makho','$makhoa','$mancc')";
+                echo "<script > alert('Thêm thành công!')</script>";
         }
         execute($sql);
 
         //
         //
-        if ($sophieu1 != '' && $sophieu1 == $sophieu4) {
+        if ($id2 != '') {
             //update 
-            $sql1 = "UPDATE ThuocXuat SET SoPhieuXuat = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE SoPhieuXuat = " .$sophieu1;
+            $sql1 = "UPDATE ThuocXuat SET SoPhieuXuat = '$sophieu1', MaThuoc ='$mathuoc',  SoLuong= '$soluong' WHERE id = " .$id2;
+                echo "<script > alert('Sửa thành công!')</script>";
+
         }else if ($sophieu1 != ''){
             //insert
             $sql1 = "INSERT INTO ThuocXuat(SoPhieuXuat,MaThuoc,SoLuong)
                 VALUES('$sophieu1', '$mathuoc', '$soluong')";
+                echo "<script > alert('Thêm thành công!')</script>";
         }
         execute($sql1);
 }
-
-    if (isset($_GET['sophieuxuat1'])) {
-        $id = $_GET['sophieuxuat1'];
+    $id3 = '';
+    if (isset($_GET['id1'])) {
+        $id3 = $_GET['id1'];
         
-        $sql = 'SELECT * FROM PhieuXuat WHERE SoPhieuXuat = '. $id;
+        $sql = 'SELECT * FROM PhieuXuat WHERE id = '. $id3;
         $nccList = executeResult($sql);
         if ($nccList != null && count($nccList) > 0) {
             $ncc = $nccList[0];
             $sophieu2 = $ncc['SoPhieuXuat'];
-            $ngay2 = $ncc['NgayNhap'];
+            $ngay2 = $ncc['NgayXuat'];
             $manv2 = $ncc['MaNV'];
             $makho2 = $ncc['MaKho'];
             $makhoa2 = $ncc['MaKhoa'];
@@ -93,11 +102,11 @@
 
         }
     }
-
-    if (isset($_GET['sophieuxuat2'])) {
-        $id1 = $_GET['sophieuxuat2'];
+    $id4 = '';
+    if (isset($_GET['id2'])) {
+        $id4 = $_GET['id2'];
         
-        $sql = 'SELECT * FROM ThuocXuat WHERE SoPhieuXuat = '. $id1;
+        $sql = 'SELECT * FROM ThuocXuat WHERE id = '. $id4;
         $ncc1List = executeResult($sql);
         if ($ncc1List != null && count($ncc1List) > 0) {
             $ncc = $ncc1List[0];
@@ -111,7 +120,7 @@
     require_once('html.php');
  ?>
         <div id = "madalClick7" class="modal"> 
-            <div id="out-form" class="grid grid__form">
+            <div id="out-form" class="grid1 grid__form">
                 <span class="login-title login-title3 login-title6">Thông tin phiếu xuất</span>
                     <span class="login-title login-title3 login-title56">Chi tiết thuốc</span>
                 <div class="manage" style="
@@ -121,7 +130,7 @@
                         <form class="manage-top_left" method="post" action="" style="
     width: 45%;
 ">
-                            
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
                                 <div class="manage-top_left-form">
                                     <div class="login-form login-form5" >
                                         <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu:</span><input type="text" name="sophieu" value="<?=$sophieu2?>" id="">
@@ -218,6 +227,8 @@
                                               <th>Mã kho</th>
                                               <th>Mã khoa</th>
                                               <th>Mã nhà cung cấp</th>
+                                              <th></th>
+                                              <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -233,13 +244,13 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
     foreach ($datmuaList as $mua) {
             echo '<tr>
                     <td>'.$mua['SoPhieuXuat'].'</td>
-                    <td width="20%">'.$mua['NgayNhap'].'</td>
+                    <td width="20%">'.$mua['NgayXuat'].'</td>
                     <td>'.$mua['MaNV'].'</td>
                     <td>'.$mua['MaKho'].'</td>
                     <td>'.$mua['MaKhoa'].'</td>
                     <td>'.$mua['MaNCC'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLXuatThuoc.php?sophieuxuat1='.$mua['SoPhieuXuat'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deletePhieuXuat('.$mua['SoPhieuXuat'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLXuatThuoc.php?id1='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deletePhieuXuat('.$mua['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>
@@ -261,7 +272,7 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <div class="manage-top manage-bottom">
                         <form class="manage-top_left" method="post" action="" style="
     width: 45%;
-">
+"><input type="number" name="id2" value="<?=$id4?>" hidden>
                             <div class="manage-top_left-form" >
                                 <div class="login-form login-form5" >
                                     <div class="login-makho login-ncc"><span class = "label label5" >Số phiếu:</span>
@@ -321,7 +332,9 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                                     <tr>
                                   <th>Số phiếu</th>
                                   <th>Mã thuốc</th> 
-                                  <th>Số lượng</th>    
+                                  <th>Số lượng</th>  
+                                  <th></th>
+                                    <th></th>  
                                 </tr>
                                </thead>
                                <tbody>
@@ -339,8 +352,8 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
                     <td>'.$mua['SoPhieuXuat'].'</td>
                     <td>'.$mua['MaThuoc'].'</td>
                     <td>'.$mua['SoLuong'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("QLXuatThuoc.php?sophieuxuat2='.$mua['SoPhieuXuat'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteThuocXuat('.$mua['SoPhieuXuat'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("QLXuatThuoc.php?id2='.$mua['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteThuocXuat('.$mua['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>  
@@ -366,27 +379,27 @@ if (isset($_GET['timkiem1']) && $_GET['timkiem1'] != '') {
 <script src="../main.js"></script>
     <script type="text/javascript">
         function deletePhieuXuat(id) {
-            option = confirm('Ban co muon xoa khong?')
+            option = confirm('Bạn có muốn xóa không?')
             if(!option) {
                 return;
             }
             $.post('delete.php', {
                         'phieuxuat': id
              }, function(data) {
-                alert('da xoa thanh cong');
+                alert('Đã xóa thành công!');
                 location.reload();
             })
                 }
 
         function deleteThuocXuat(id) {
-            option = confirm('Ban co muon xoa khong?')
+            option = confirm('Bạn có muốn xóa không?')
             if(!option) {
                 return;
             }
             $.post('delete.php', {
                         'thuocxuat': id
              }, function(data) {
-                alert('da xoa thanh cong');
+                alert('Đã xóa thành công!');
                 location.reload();
             })
                 }

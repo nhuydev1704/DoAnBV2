@@ -1,7 +1,7 @@
 <?php 
-    $mathuoc = $tenthuoc = $donvitinh = $dongia =$ngaysx = $hansd = $nhasx = $soluongton = $mathuoc2 = $tenthuoc2 = $donvitinh2 = $dongia2 =$ngaysx2 = $hansd2 = $nhasx2 = $soluongton2 = $mathuoc1 ="";
+ $upload_directory = __DIR__ . DIRECTORY_SEPARATOR . "photo/";
+    $anh = $id2 = $id1 = $mathuoc = $tenthuoc = $donvitinh = $dongia =$ngaysx = $hansd = $nhasx = $soluongton = $mathuoc2 = $tenthuoc2 = $donvitinh2 = $dongia2 =$ngaysx2 = $hansd2 = $nhasx2 = $soluongton2 = $mathuoc1 ="";
 	require_once ('dbhelp.php');
-	$mathuoc1 = $_GET['mathuoc'];
     if (!empty($_POST)) {
     	if (isset($_POST['mathuoc'])) {
     		$mathuoc = $_POST['mathuoc'];
@@ -38,6 +38,12 @@
             $soluongton = $_POST['soluongton'];
 
         }
+        if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
     	$mathuoc = str_replace('\'','\\\'', $mathuoc);
     	$tenthuoc = str_replace('\'','\\\'', $tenthuoc);
     	$donvitinh = str_replace('\'','\\\'', $donvitinh);
@@ -46,21 +52,39 @@
         $hansd = str_replace('\'','\\\'', $hansd);
         $nhasx = str_replace('\'','\\\'', $nhasx);
         $soluongton = str_replace('\'','\\\'', $soluongton);
-    	if ($mathuoc != '' &&  $mathuoc == $mathuoc1) {
+
+        $anh = $_FILES['anh']['name'];
+                if($anh != null)
+                {
+                $path = "photo/";
+                $tmp_name = $_FILES['anh']['tmp_name'];
+                $anh = $_FILES['anh']['name'];
+
+                move_uploaded_file($tmp_name,$path.$anh);
+    	if ($id1 != '') {
     		//update 
-    		$sql = "UPDATE Thuoc SET MaThuoc = '$mathuoc', TenThuoc ='$tenthuoc',  DonViTinh= '$donvitinh', DonGia='$dongia',NgaySanXuat = '$ngaysx', HanSuDung ='$hansd',  NhaSanXuat= '$nhasx', SoLuongTon='$soluongton' WHERE MaThuoc = " .$mathuoc;
+    		$sql = "UPDATE Thuoc SET MaThuoc = '$mathuoc', TenThuoc ='$tenthuoc',  DonViTinh= '$donvitinh', DonGia='$dongia',Anh = '$anh',NgaySanXuat = '$ngaysx', HanSuDung ='$hansd',  NhaSanXuat= '$nhasx', SoLuongTon='$soluongton' WHERE id = " .$id1;
+            $sql2 = "UPDATE GioHang SET MaThuoc = '$mathuoc', TenThuoc = '$tenthuoc',DonViTinh = '$donvitinh',Anh ='$anh', Gia = '$dongia',
+             HanSuDung = '$hansd',NhaSanXuat='$nhasx' WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
     	}else if($mathuoc != ''){
     		//insert
-    		$sql = "INSERT INTO Thuoc(MaThuoc,TenThuoc,DonViTinh,DonGia,NgaySanXuat,HanSuDung,NhaSanXuat,SoLuongTon)
-    			VALUES('$mathuoc', '$tenthuoc', '$donvitinh','$dongia','$ngaysx', '$hansd', '$nhasx','$soluongton')";
-    	}
-    	execute($sql);
-}
+    		$sql = "INSERT INTO Thuoc(MaThuoc,TenThuoc,DonViTinh,DonGia,Anh,NgaySanXuat,HanSuDung,NhaSanXuat,SoLuongTon)
+    			VALUES('$mathuoc', '$tenthuoc', '$donvitinh','$dongia','$anh','$ngaysx', '$hansd', '$nhasx','$soluongton')";
+                $sql2 = "INSERT INTO GioHang(MaThuoc,TenThuoc,DonViTinh,Anh, Gia,HanSuDung,NhaSanXuat)
+             VALUES('$mathuoc','$tenthuoc', '$donvitinh','$anh','$dongia','$hansd', '$nhasx')";
+                echo "<script > alert('Thêm thành công!')</script>";
 
-    if (isset($_GET['mathuoc'])) {
-    	$mathuoc = $_GET['mathuoc'];
+    	}}
+        execute($sql);
+    	execute($sql2);
+}
+$id3 = '';
+    if (isset($_GET['id1'])) {
+    	$id3 = $_GET['id1'];
     	
-    	$sql = 'SELECT * FROM Thuoc WHERE MaThuoc = '. $mathuoc;
+    	$sql = 'SELECT * FROM Thuoc WHERE id = '. $id3;
     	$thuocList = executeResult($sql);
     	if ($thuocList != null && count($thuocList) > 0) {
     		$thuoc = $thuocList[0];
@@ -79,7 +103,9 @@
     require_once('html.php');
  ?>
 	<div id = "madalClick4" class="modal"> 
-            <form id="out-form" class="grid grid__form" method="post" action="">
+            <form id="out-form" class="grid1 grid__form" method="post" action="" enctype="multipart/form-data">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
+
                 <div class="form-login">
                     <div class="login login3 login4">
                         <span class="login-title login-title3" style="
@@ -95,6 +121,10 @@
                             </div>
                             <div class="login-makho login-ncc"><span class = "label" >Đơn giá:</span><input type="text" name="dongia" id="" value="<?=$dongia2?>">
                             </div>
+                            <div class="login-makho login-ncc">
+                                <label class="form-label" for="customFile">Tải ảnh:</label>
+                                <input type="file" name="anh" class="form-file" id="customFile">
+                            </div>
                         </div>
                         <div class="login-form login-form3 login-form4">
                             
@@ -104,9 +134,9 @@
                             </div>
                             <div class="login-makho login-ncc"><span class = "label" >Hạn sử dụng:</span>
                                 <input type="date" id="start" name="hansd"
-                                           min="2010-01-01" max="2020-12-31" value="<?=$hansd2?>">
+                                           min="2010-01-01" max="2030-12-31" value="<?=$hansd2?>">
                             </div>
-                            <div class="login-tenkho login-ncc"><span class = "label" >Nhà sản xuất</span>
+                            <div class="login-tenkho login-ncc"><span class = "label" >Nội dung</span>
                                 <input type="text" name="nhasx" id="" value="<?=$nhasx2?>">
                                 <!-- <select name="cars" id="cars" class="">
                                     <option value="maianh">mai anh</option>
@@ -129,7 +159,7 @@
                         </div>
                     </div>
                     <div class="value">
-                        <table class="table3" style="margin: 0; width: 82%;">
+                        <table class="table3" style="width: 82%;">
                            <thead>
                                 <tr>
                                       <th>Mã thuốc</th>
@@ -138,8 +168,10 @@
                                       <th>Đơn giá</th>
                                       <th>Ngày sản xuất</th>
                                       <th>Hạn sử dụng</th>
-                                      <th>Nhà sản xuất</th>
-                                      <th>Số lượng tồn</th>   
+                                      <th>Nội dung</th>
+                                      <th>Số lượng tồn</th>  
+                                      <th></th>
+                                       <th></th> 
                                 </tr>
                            </thead>
 
@@ -163,8 +195,8 @@
                     <td>'.$pill['HanSuDung'].'</td>
                     <td>'.$pill['NhaSanXuat'].'</td>
                     <td>'.$pill['SoLuongTon'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("Pill.php?mathuoc='.$pill['MaThuoc'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deletePill('.$pill['MaThuoc'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("Pill.php?id1='.$pill['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deletePill('.$pill['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>
@@ -175,7 +207,7 @@
                 </div>
                 
             </form>
-             <form class="timkiem" action="" method="get" style="top:52.5%;">
+             <form class="timkiem" action="" method="get" style="top: 52.5%;left: 48%;">
                         <div class="login-tenkho "><input type="text" name="timkiem" placeholder="Ten Thuoc">
                             <button>Tim</button></div>
             </form>

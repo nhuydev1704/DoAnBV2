@@ -1,7 +1,6 @@
 <?php 
-    $mancc = $tenncc = $diachi = $sodienthoai = $mancc2 = $tenncc2 = $diachi2 = $sodienthoai2 = "";
+    $id1 = $id2 = $mancc = $tenncc = $diachi = $sodienthoai = $mancc2 = $tenncc2 = $diachi2 = $sodienthoai2 = "";
 	require_once ('dbhelp.php');
-	$mancc1 = $_GET['mancc'];
     if (!empty($_POST)) {
     	if (isset($_POST['mancc'])) {
     		$mancc = $_POST['mancc'];
@@ -20,26 +19,36 @@
     		$sodienthoai = $_POST['sodienthoai'];
 
     	}
+        if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
     	$mancc = str_replace('\'','\\\'', $mancc);
     	$tenncc = str_replace('\'','\\\'', $tenncc);
     	$diachi = str_replace('\'','\\\'', $diachi);
     	$sodienthoai = str_replace('\'','\\\'', $sodienthoai);
 
-    	if ($mancc != '' &&  $mancc == $mancc1) {
+    	if ($id1 != '') {
     		//update 
-    		$sql = "UPDATE NhaCungCap SET MaNCC = '$mancc', TenNCC ='$tenncc',  DiaChi= '$diachi', SoDT='$sodienthoai' WHERE MaNCC = " .$mancc;
+    		$sql = "UPDATE NhaCungCap SET MaNCC = '$mancc', TenNCC ='$tenncc',  DiaChi= '$diachi', SoDT='$sodienthoai' WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
     	}else if ($mancc != ''){
     		//insert
     		$sql = "INSERT INTO NhaCungCap(MaNCC,TenNCC,DiaChi,SoDT)
     			VALUES('$mancc', '$tenncc', '$diachi','$sodienthoai')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
     	}
     	execute($sql);
 }
-
-    if (isset($_GET['mancc'])) {
-    	$mancc = $_GET['mancc'];
+$id3  = '';
+    if (isset($_GET['id1'])) {
+    	$id3 = $_GET['id1'];
     	
-    	$sql = 'SELECT * FROM NhaCungCap WHERE MaNCC = '. $mancc;
+    	$sql = 'SELECT * FROM NhaCungCap WHERE id = '. $id3;
     	$nccList = executeResult($sql);
     	if ($nccList != null && count($nccList) > 0) {
     		$ncc = $nccList[0];
@@ -54,7 +63,9 @@
     require_once('html.php');
  ?>
 	<div id = "madalClick3" class="modal"> 
-            <form id="out-form" class="grid grid__form" method="post" action="">
+            <form id="out-form" class="grid1 grid__form" method="post" action="">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
+
                 <div class="form-login">
                     <div class="login login3">
                         <span class="login-title login-title3">Thông tin nhà cung cấp</span>
@@ -86,6 +97,8 @@
                                   <th>Tên nhà cung cấp</th>
                                   <th>Địa chỉ</th>
                                   <th>Số điện thoại</th>
+                                  <th></th>
+                                  <th></th>
                                 </tr>
                             </thead>
                             
@@ -105,8 +118,8 @@ if (isset($_GET['timkiem']) && $_GET['timkiem'] != '') {
                     <td>'.$ncc['TenNCC'].'</td>
                     <td>'.$ncc['DiaChi'].'</td>
                     <td>'.$ncc['SoDT'].'</td>
-                    <td><div class="btn11" onclick=\'window.open("NhaCC.php?mancc='.$ncc['MaNCC'].'","_self")\'>Edit</div></td>
-                    <td><div class="btn11" onclick="deleteNhaCC('.$ncc['MaNCC'].')">Delete</div></td>
+                    <td><div class="btn11" onclick=\'window.open("NhaCC.php?id1='.$ncc['id'].'","_self")\'>Edit</div></td>
+                    <td><div class="btn11" onclick="deleteNhaCC('.$ncc['id'].')">Delete</div></td>
                 </tr>';                          
     }
 ?>

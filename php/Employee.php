@@ -1,7 +1,6 @@
 <?php 
-    $manv = $tennv = $diachi = $gioitinh = $ngaysinh = $sodienthoai = $manv2 = $tennv2 = $diachi2 = $gioitinh2 = $ngaysinh2 = $sodienthoai2 = $manv1 = "";
+    $id1 = $id2 =$manv = $tennv = $diachi = $gioitinh = $ngaysinh = $sodienthoai = $manv2 = $tennv2 = $diachi2 = $gioitinh2 = $ngaysinh2 = $sodienthoai2 = $manv1 = "";
 	require_once ('dbhelp.php');
-	$manv1 = $_GET['manv'];
     if (!empty($_POST)) {
     	if (isset($_POST['manv'])) {
     		$manv = $_POST['manv'];
@@ -30,6 +29,12 @@
     		$sodienthoai = $_POST['sodienthoai'];
 
     	}
+        if (isset($_POST['id'])) {
+            $id1 = $_POST['id'];
+        }
+        if (isset($_POST['id2'])) {
+            $id2 = $_POST['id2'];
+        }
     	$manv = str_replace('\'','\\\'', $manv);
     	$tennv = str_replace('\'','\\\'', $tennv);
     	$diachi = str_replace('\'','\\\'', $diachi);
@@ -37,21 +42,25 @@
     	$ngaysinh = str_replace('\'','\\\'', $ngaysinh);
     	$sodienthoai = str_replace('\'','\\\'', $sodienthoai);
 
-    	if ($manv != '' &&  $manv == $manv1) {
+    	if ($id1 != '') {
     		//update 
-    		$sql = "UPDATE NhanVien SET MaNV = '$manv', TenNV ='$tennv',  DiaChi= '$diachi', GioiTinh='$gioitinh', NgaySinh='$ngaysinh', SoDT='$sodienthoai' WHERE MaNV = " .$manv;
+    		$sql = "UPDATE NhanVien SET MaNV = '$manv', TenNV ='$tennv',  DiaChi= '$diachi', GioiTinh='$gioitinh', NgaySinh='$ngaysinh', SoDT='$sodienthoai' WHERE id = " .$id1;
+                echo "<script > alert('Sửa thành công!')</script>";
+
     	}else if ($manv != ''){
     		//insert
     		$sql = "INSERT INTO NhanVien(MaNV,TenNV,DiaChi,GioiTinh,NgaySinh,SoDT)
     			VALUES('$manv', '$tennv', '$diachi', '$gioitinh', '$ngaysinh', '$sodienthoai')";
+                echo "<script > alert('Thêm thành công!')</script>";
+
     	}
     	execute($sql);
 }
-
-    if (isset($_GET['manv'])) {
-    	$manv = $_GET['manv'];
+$id3 = '';
+    if (isset($_GET['id1'])) {
+    	$id3 = $_GET['id1'];
     	
-    	$sql = 'SELECT * FROM NhanVien WHERE MaNV = '. $manv;
+    	$sql = 'SELECT * FROM NhanVien WHERE id = '. $id3;
     	$employeeList = executeResult($sql);
     	if ($employeeList != null && count($employeeList) > 0) {
     		$epl = $employeeList[0];
@@ -69,9 +78,11 @@
  ?>
 
 	<div id = "" class="modal "> 
-            <div id="out-form2" class="grid grid__form" >
+            <div id="out-form2" class="grid1 grid__form" >
                 <div class="form-login">
                 	<form method="post" action="">
+                            <input type="number" name="id" value="<?=$id3?>" hidden>
+
 	                    <div class="login">
 	                        <span class="login-title login-title10">Cập nhập nhân viên</span>
 	                        <div class="login-form_flex">
@@ -113,6 +124,8 @@
                                 <th>Giới tính</th>
                                 <th>Ngày sinh</th>
                                 <th>Số điện thoại</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                           </thead>
                           <tbody  id="table2">
@@ -135,8 +148,8 @@
                     <td>'.$epl['GioiTinh'].'</td>
                     <td>'.$epl['NgaySinh'].'</td>
                     <td>'.$epl['SoDT'].'</td>
-                    <td><button class="btn11" onclick=\'window.open("Employee.php?manv='.$epl['MaNV'].'","_self")\'>Edit</button></td>
-                    <td><button class="btn11" onclick="deleteNhanVien('.$epl['MaNV'].')">Delete</button></td>
+                    <td><button class="btn11" onclick=\'window.open("Employee.php?id1='.$epl['id'].'","_self")\'>Edit</button></td>
+                    <td><button class="btn11" onclick="deleteNhanVien('.$epl['id'].')">Delete</button></td>
                 </tr>';                          
     }
 ?>

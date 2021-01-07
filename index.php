@@ -14,10 +14,6 @@
       <div class="app">
       <div class="div1" style="color: white;">
          <span><img class="div1-img" src="./assets/img/logo.png" alt=""></span>
-         <span> Phân </span>
-         <span> Tích </span>
-         <span> Thiết </span>
-         <span> Kế </span>
          <span> Hệ </span>
          <span> Thống </span>
          <span> Quản </span>
@@ -28,7 +24,7 @@
          <span> Viện </span>
       </div>
       <!-- <div class="nhom8">NGUYỄN NHƯ Ý</div> -->
-      <div class="grid">
+      <div class="grid1">
          <div class="picture">
             <div class="picture__selection">
                <div class="picture__selection-btn">
