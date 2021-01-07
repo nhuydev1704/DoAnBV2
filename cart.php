@@ -161,7 +161,7 @@
                         <input type="submit" name="update_click" value="Cập nhật" />
                     </div>
                     <hr>
-                    <div><label>Người nhận: </label><input type="text" value="" name="name" /></div>
+                    <div><label>Tên nhân viên: </label><input type="text" value="" name="name" /></div>
                     <div><label>Điện thoại: </label><input type="text" value="" name="phone" /></div>
                     <div><label>Địa chỉ: </label><input type="text" value="" name="address" /></div>
                     <div><label>Ghi chú: </label><textarea name="note" cols="50" rows="7" ></textarea></div>

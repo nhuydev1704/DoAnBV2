@@ -53,7 +53,7 @@
                                 <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên Người Đặt</th>
+                                        <th>Tên Nhân Viên Đặt</th>
                                         <th>Số Điện Thoại</th>
                                         <th>Địa Chỉ</th>
                                         <th>Ghi Chú</th>

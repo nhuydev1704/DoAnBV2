@@ -5,16 +5,16 @@ body{
     box-sizing: border-box;
 }
 .container{
-    width: 1200px;
+    width: 800px;
     margin: 0 auto;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     padding: 15px;
 }
 h1{
     text-align: center;
 }
 .product-items{
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     padding: 30px;
 }
 .product-item{
@@ -23,7 +23,7 @@ h1{
     margin: 1%;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     line-height: 26px;
 }
 .product-item label{
@@ -41,7 +41,7 @@ h1{
 }
 .product-img{
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     margin-bottom: 5px;
 }
 .product-item img{
@@ -50,14 +50,14 @@ h1{
 .product-item ul{
     margin: 0;
     padding: 0;
-    border-right: 1px solid #000;
+    border-right: 1px solid #26a01e;
 }
 .product-item ul li{
     float: left;
     width: 33.3333%;
     list-style: none;
     text-align: center;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     border-right: 0;
     box-sizing: border-box;
 }
@@ -81,16 +81,16 @@ a{
     margin-top: 15px;
 }
 .page-item{
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     padding: 5px 9px;
-    color: #000;
+    color: #26a01e;
 }
 .current-page{
-    background: #000;
+    background: #26a01e;
     color: #FFF;
 }
 #product-detail{
-    border-top: 1px solid #000;
+    border-top: 1px solid #26a01e;
     padding: 15px 0 0 0;
 }
 #product-img{
@@ -106,7 +106,7 @@ a{
 #product-img img{
     max-width: 100%;
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     background: #eee;
 }
 h1{
@@ -114,8 +114,8 @@ h1{
     margin-top: 0;
 }
 label.add-to-cart{
-    background: #000;
-    border: 1px solid #000;
+    background: #26a01e;
+    border: 1px solid #26a01e;
     margin-top: 15px;
     padding: 15px;
     display: inline-block;
@@ -140,7 +140,7 @@ label a{
     height: 100px;
     text-align: center;
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     background: #eee;
 }
 #gallery ul li img{
@@ -153,7 +153,7 @@ table{
     width: 1170px;
 }
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #26a01e;
 }
 table .product-img img{
     max-width: 100px;
@@ -211,7 +211,7 @@ input[name="order_click"]{
 }
 #row-total{
     background: #eee;
-    color: #000;
+    color: #26a01e;
 }
 
 #add-to-cart-form input[type='text']{
@@ -220,8 +220,8 @@ input[name="order_click"]{
     line-height: 30px;
 }
 #add-to-cart-form input[type='submit']{
-    background: #000;
-    border: 1px solid #000;
+    background: #26a01e;
+    border: 1px solid #26a01e;
     margin-top: 10px;
     padding: 15px;
     display: inline-block;
@@ -236,14 +236,14 @@ body{
 .container{
     width: 1200px;
     margin: 0 auto;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     padding: 15px;
 }
 h1{
     text-align: center;
 }
 .product-items{
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     padding: 30px;
 }
 .product-item{
@@ -252,7 +252,7 @@ h1{
     margin: 1%;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     line-height: 26px;
 }
 .product-item label{
@@ -270,7 +270,7 @@ h1{
 }
 .product-img{
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     margin-bottom: 5px;
 }
 .product-item img{
@@ -279,14 +279,14 @@ h1{
 .product-item ul{
     margin: 0;
     padding: 0;
-    border-right: 1px solid #000;
+    border-right: 1px solid #26a01e;
 }
 .product-item ul li{
     float: left;
     width: 33.3333%;
     list-style: none;
     text-align: center;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     border-right: 0;
     box-sizing: border-box;
 }
@@ -310,16 +310,16 @@ a{
     margin-top: 15px;
 }
 .page-item{
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     padding: 5px 9px;
-    color: #000;
+    color: #26a01e;
 }
 .current-page{
-    background: #000;
+    background: #26a01e;
     color: #FFF;
 }
 #product-detail{
-    border-top: 1px solid #000;
+    border-top: 1px solid #26a01e;
     padding: 15px 0 0 0;
 }
 #product-img{
@@ -335,7 +335,7 @@ a{
 #product-img img{
     max-width: 100%;
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     background: #eee;
 }
 h1{
@@ -343,8 +343,8 @@ h1{
     margin-top: 0;
 }
 label.add-to-cart{
-    background: #000;
-    border: 1px solid #000;
+    background: #26a01e;
+    border: 1px solid #26a01e;
     margin-top: 15px;
     padding: 15px;
     display: inline-block;
@@ -369,7 +369,7 @@ label a{
     height: 100px;
     text-align: center;
     padding: 5px;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     background: #eee;
 }
 #gallery ul li img{
@@ -382,7 +382,7 @@ table{
     width: 1170px;
 }
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #26a01e;
 }
 table .product-img img{
     max-width: 100px;
@@ -440,7 +440,7 @@ input[name="order_click"]{
 }
 #row-total{
     background: #eee;
-    color: #000;
+    color: #26a01e;
 }
 
 #add-to-cart-form input[type='text']{
@@ -450,7 +450,7 @@ input[name="order_click"]{
 }
 #add-to-cart-form input[type='submit']{
     background: #26a01e;
-    border: 1px solid #000;
+    border: 1px solid #26a01e;
     margin-top: 20px;
     padding: 10px;
     display: inline-block;
