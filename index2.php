@@ -38,7 +38,7 @@
                            </div>
                      </div>
             </div>
-            <div class="container-body">
+            <div class="container-body color">
                <div class="right-header2">
                      <div class="grid wide">
                         <div class="row">
